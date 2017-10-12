@@ -1,19 +1,17 @@
 ---
 title: "MASTER CONCORDANCE FILE"
-author: "Nonprofit Open Data Collective"
 output: html_document
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
+*Created by the Nonprofit Open Data Collective under the [GPL-3.0](https://opensource.org/licenses/GPL-3.0) open source license for free use by all*.
 
 This repository provides documentation for the Master Concordance File, the rosetta stone needed to convert IRS 990 E-Filer XML documents on AWS into structured databases.
 
-The data dictionary below describes fields in the Master Confordance File. For a data dictionary describing all data fields on the 990 forms, click [here](data_dictionary.html).
+The data dictionary below describes fields in the Master Concordance File. Click here for a [data dictionary describing all variables on the 990 forms](data_dictionary.html).
 
-Submit questions and issues here.
+[Submit questions and issues here](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/issues/new).
 
 
 
