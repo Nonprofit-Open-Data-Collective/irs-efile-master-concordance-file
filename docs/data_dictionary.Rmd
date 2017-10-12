@@ -1,0 +1,31 @@
+---
+title: "Data Dictionary"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=F, message=F)
+
+library( knitr )
+
+
+```
+
+
+
+```{r, echo=F, results='asis'}
+
+dat <- read.csv( "../CONCORDANCE_V1.csv" )
+
+d2 <- dat[ c("VARIABLE_NAME","DESCRIPTION","LOCATION_CODE","SCOPE") ]
+
+d2 <- d2[ ! duplicated(d2$VARIABLE_NAME), ]
+
+d2 <- d2[ order( d2$LOCATION_CODE ) , ]
+
+row.names( d2 ) <- NULL
+
+kable( d2 )
+
+```
+
