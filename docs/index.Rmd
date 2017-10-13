@@ -6,7 +6,7 @@ output: html_document
 
 
 
-This repository provides documentation for the Master Concordance File, the rosetta stone needed to convert IRS 990 E-Filer XML documents on AWS into structured databases.
+This page provides documentation for the Master Concordance File, the rosetta stone needed to convert IRS 990 E-Filer XML documents on AWS into structured databases.
 
 The data dictionary below describes fields in the Master Concordance File. Click here for a [data dictionary describing all variables on the 990 forms](data_dictionary.html).
 
@@ -47,8 +47,6 @@ A more in-depth description of each is covered below.
 
 ### VARIABLE_NAME
 
-Name of the variables in the research database.
-
 Each variable name begins with a 6-letter prefix the follows the pattern: XX_XX_XX_NAME.
 
 Since there are over 6,500 unique variables, the prefix helps organize the variables into groups. The prefix indicates the FORM, SCOPE, and LOCATION of the variable.
@@ -71,21 +69,25 @@ LOCATION - two digit code indicating the PART of the 990 form, or groups of vari
 * 02 - Variable occurs in Part II of the form
 * Etc.
 
-
+Each variable has been assigned a unique name. One variable might appear several times in the concordance file in circumstances where multiple xpaths map onto the same variable. This happens when xpaths have changed over different versions of the IRS e-filer schema, or when the same variable occurs on both the 990-PC and 990-EZ forms.
 
 
 ### DESCRIPTION
 
-Definition of the field on the 990 forms.
+Definition of the variable based upon information on the 990 forms.
 
 
 ### SCOPE
 
 <img src="../assets/variable_scope.png" width="600">
 
-Each nonprofit will file a different 990 form. Typically large nonprofits file the full 990 form (which we are labeling the 990-PC form). Small nonprofits file If we want to examine data available for ALL nonprofits, we need to rely on a set of variables that appear on both 990 and 990-EZ forms. The scope code was created to describe which set of filers for which information is available in a given variable. This specifically helps address the problem of interpretting missing values - is it missing because the nonprofit did not fill out the field, and thus it should be interpretted as zero or false, or because the field was not available on the specific form that the nonprofit used.
+Nonprofits can e-file two versions of the 990 form. Typically large nonprofits file the full 990 form (which we are calling the 990-PC form). Small nonprofits file the 990-EZ form. 
 
-The PC, EZ, and PZ codes indicate variables related to public charities / nonprofit organizations. The PF code indicates variables that pertain to foundations.
+The scope codes, PC, EZ, and PZ describes the population that a variable covers. The PZ code has the largest scope since this set of variables occur on both the full 990 and the 990-EZ forms. The PC code refers to variables that are ONLY on the full 990 form. The EZ code refers to variables ONLY on the 990-EZ form. 
+
+All foundations file the same form. All of the variables from that form are designated by the PF (private foundation) scope code.
+
+If we want to conduct a study on the population of active nonprofits then we need to rely on the PZ subset of variables.
 
 * **PC** - Variable present ONLY on the full 990-PC form for public charities / nonprofits 
 * **EZ** - Variable present ONLY on the 990-EZ form for charities / nonprofits 
@@ -93,7 +95,7 @@ The PC, EZ, and PZ codes indicate variables related to public charities / nonpro
 * **PF** - Variable present on form 990-PF for foundations 
 
 
-Schedules have the following scope, meaning organizations that file the main form PC, EZ, or PF can file the Schedule when necessary:
+Some schedules are only relevant for nonprofits filing the full 990-PC form. The only schedule that foundations file is Schedule B. Thus, variables on the schedules have the following scope:
 
 * Schedule A: **PC** AND **EZ**
 * Schedule B: **PC** AND **EZ** AND **PF**
@@ -121,20 +123,17 @@ Schedules have the following scope, meaning organizations that file the main for
 <img src="../assets/location_code_example_2.png" width="600">
 
 
-Location codes indicate the location on the paper version of the 990 form for easy of look-up.
-
-Note that we have used the IRS 2016 versions of forms and schedules to create location codes. Location of fields may change over time as forms are revised.
+Location codes indicate the location of the field on the paper version of the 990 form for easy of look-up.
 
 The location code is meant to be hierarchical and approximate organized as:
 
 FORM -> PART -> LINE -> SUBLINE or COLUMN
 
+Note that location of fields on 990 forms may change over time as forms are revised. We have defined location codes based upon the [IRS 2016 versions of forms and schedules](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/tree/master/990_forms). 
+
 All location codes begin with either F990-PC, F990-EZ, F990-PF, or SCHED-A through SCHED-R.
 
 Some foundations are requird to submit auxillary schedules. These are indicated by AUX-SCHED after the location code.
-
-
-
 
 
 
@@ -217,7 +216,7 @@ EBT | 990-PF Auxillary Schedule | 1
 
 Reports the location of the field on the 990 forms for ease of look-up and to organize variables by groups.
 
-*Note that PZ fields reference the location on the 2016 full 990 form, which will rarely be located in the same place on the 990-EZ form. This is for visual reference only.*
+*Note that PZ fields occur on both the 990-PC and 990-EZ forms. The part code references the location on the full 990-PC form, which will rarely be in the same place on the 990-EZ form. If you need the location of PZ variables on the EZ form use the location codes instead.*
 
 
 

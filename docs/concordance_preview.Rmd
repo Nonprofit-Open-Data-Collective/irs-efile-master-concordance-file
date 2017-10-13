@@ -1,0 +1,27 @@
+---
+title: "Master Concordance File"
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=F, message=F)
+
+library( knitr )
+
+
+```
+
+
+
+```{r, echo=F, results='asis'}
+
+dat <- read.csv( "../efiler_master_concordance.csv" )
+
+row.names( dat ) <- NULL
+
+kable( dat )
+
+```
+
