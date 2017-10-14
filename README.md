@@ -34,7 +34,7 @@ A more in-depth description of each variable is available [HERE](https://nonprof
 # FORM 990 and SCHEDULE SECTIONS
 
 
-### FORM 990-PC
+### FORM 990-PC (FULL)
 
 Part I    - Summary  
 Part II   - Signature Block  
@@ -42,12 +42,12 @@ Part III  - Statement of Program Service Accomplishments
 Part IV   - Checklist of Required Schedules  
 Part V    - Statements Regarding Other IRS Filings and Tax Compliance  
 Part VI   - Governance, Management, and Disclosure  
-	    Section A. Governing Body and Management  
-	    Section B. Policies  
-	    Section C. Disclosure  
+    Section A. Governing Body and Management  
+    Section B. Policies  
+    Section C. Disclosure  
 Part VII  - Compensation of Officers, Directors, Trustees, Key Employees, Highest Compensated Employees, and Independent Contractors  
-	    Section A. Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees  
-	    Section B. Independent Contractors  
+    Section A. Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees  
+    Section B. Independent Contractors  
 Part VIII - Statement of Revenue  
 Part IX   - Statement of Functional Expenses  
 Part X    - Balance Sheet  
