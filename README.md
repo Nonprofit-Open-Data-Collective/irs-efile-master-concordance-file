@@ -58,7 +58,8 @@ A more in-depth description of each variable is available [HERE](https://nonprof
 ### SCHEDULE A - PUBLIC CHARITY STATUS AND PUBLIC SUPPORT (PC AND EZ FILERS)
 Complete if the organization is a section 501(c)(3) organization or a section 4947(a)(1) nonexempt charitable trust.
 
-Part I    - Reason for Public Charity Status
+*Tabspace* Part I    - Reason for Public Charity Status
+
 Part II   - Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)
             Section A. Public Support
             Section B. Total Support
