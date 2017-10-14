@@ -8,26 +8,29 @@ The MCF is meant to serve as a rosetta stone of sorts, allowing programmers to c
 
 Follow the [MCF DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
 
+--- 
 
-## DATA DICTIONARY 
+## DATA DICTIONARY FOR MASTER CONCORDANCE FILE
 
 The [efiler_master_concordance.csv](efiler_master_concordance.csv) included in this repository consists of the following variables:
 
-* **VARIABLE_NAME** - Name of research database variable
-* **DESCRIPTION** - Definition of the variable, derived from 990 forms
-* **SCOPE** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
-* **LOCATION_CODE** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
-* **FORM** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
-* **PART** - Location of the field on the form
-* **RDB_TABLE** - Tables for organizing the data into a relational database
-* **PRODUCTION_RULE** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
-* **XPATH** - XML address for the data
-* **VERSION** - The XSD schema version that the xpath belongs to
-* **REQUIRED** - Indicates whether nonprofit filers are required to complete this field
-* **NOTES** - Additional notes about variables from programmers and users
+* **varianble_name** - Name of research database variable
+* **description** - Definition of the variable, derived from 990 forms
+* **scope** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
+* **location_code** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
+* **form** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
+* **part** - Location of the field on the form
+* **rdb_table** - Tables for organizing the data into a relational database
+* **production_rule** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
+* **xpath** - XML address for the data
+* **xsd_version** - The XSD schema version that the xpath belongs to
+* **required** - Indicates whether nonprofit filers are required to complete this field
+* **notes** - Additional notes about variables from programmers and users
 
 A more in-depth description of each variable is available [HERE](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/).
 
+
+---
 
 
 
@@ -61,26 +64,26 @@ Complete if the organization is a section 501(c)(3) organization or a section 49
 
 * Part I    - Reason for Public Charity Status
 * Part II   - Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)
-            * Section A. Public Support
-            * Section B. Total Support
-            * Section C. Computation of Public Support Percentage
+** Section A. Public Support
+** Section B. Total Support
+** Section C. Computation of Public Support Percentage
 * Part III  - Support Schedule for Organizations Described in Section 509(a)(2)
-            * Section A. Public Support
-            * Section B. Total Support
-            * Section C. Computation of Public Support Percentage
-            * Section D. Computation of Investment Income Percentage
+    * Section A. Public Support
+    * Section B. Total Support
+    * Section C. Computation of Public Support Percentage
+    * Section D. Computation of Investment Income Percentage
 * Part IV   - Supporting Organizations
-            * Section A. All Supporting Organizations
-            * Section B. Type I Supporting Organizations
-            * Section C. Type II Supporting Organizations
-            * Section D. All Type III Supporting Organizations
-            * Section E. Type III Functionally Integrated Supporting Organizations
+    * Section A. All Supporting Organizations
+    * Section B. Type I Supporting Organizations
+    * Section C. Type II Supporting Organizations
+    * Section D. All Type III Supporting Organizations
+    * Section E. Type III Functionally Integrated Supporting Organizations
 * Part V    - Type III Non-Functionally Integrated 509(a)(3) Supporting Organizations            
-            * Section A - Adjusted Net Income
-            * Section B - Minimum Asset Amount
-            * Section C - Distributable Amount
-            * Section D - Distributions
-            * Section E - Distribution Allocations
+    * Section A - Adjusted Net Income
+    * Section B - Minimum Asset Amount
+    * Section C - Distributable Amount
+    * Section D - Distributions
+    * Section E - Distribution Allocations
 * Part VI   - Supplemental Information (UNSTRUCTURED - CAN WE CODE THIS?)           
 
 
@@ -102,7 +105,7 @@ Complete if the organization is a section 501(c)(3) organization or a section 49
 * Part II-A - Complete if the organization is exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h))
 * Part II-B - Complete if the organization is exempt under section 501(c)(3) and has NOT filed Form 5768 (election under section 501(h))
 * Part IIIA - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6)
-* Part IIIB - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6) and if either (a)    * BOTH Part III-A, lines 1 and 2, are answered “No,” OR (b) Part III-A, line 3, is answered “Yes.”
+* Part IIIB - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6) and if either (a)     * BOTH Part III-A, lines 1 and 2, are answered “No,” OR (b) Part III-A, line 3, is answered “Yes.”
 * Part IV   - Supplemental Information
 
 
