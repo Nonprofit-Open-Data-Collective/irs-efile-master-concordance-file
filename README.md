@@ -38,6 +38,8 @@ A more in-depth description of each variable is available [HERE](https://nonprof
 # FORM 990 and SCHEDULE SECTIONS
 
 
+*These groups are based upon the [2016 IRS 990 Forms and Schedules](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/tree/master/990_forms).
+
 ### FORM 990-PC (FULL)
 
 * Part I    - Summary  
@@ -61,7 +63,7 @@ A more in-depth description of each variable is available [HERE](https://nonprof
   
 ### SCHEDULE A - PUBLIC CHARITY STATUS AND PUBLIC SUPPORT (PC AND EZ FILERS)
 
-Complete if the organization is a section 501(c)(3) organization or a section 4947(a)(1) nonexempt charitable trust.
+*Complete if the organization is a section 501(c)(3) organization or a section 4947(a)(1) nonexempt charitable trust.*
 
 * Part I    - Reason for Public Charity Status
 * Part II   - Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)
@@ -106,14 +108,14 @@ Complete if the organization is a section 501(c)(3) organization or a section 49
 * Part II-A - Complete if the organization is exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h))
 * Part II-B - Complete if the organization is exempt under section 501(c)(3) and has NOT filed Form 5768 (election under section 501(h))
 * Part IIIA - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6)
-* Part IIIB - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6) and if either (a)     * BOTH Part III-A, lines 1 and 2, are answered “No,” OR (b) Part III-A, line 3, is answered “Yes.”
+* Part IIIB - Complete if the organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6) and if either (a) BOTH Part III-A, lines 1 and 2, are answered “No,” OR (b) Part III-A, line 3, is answered “Yes.”
 * Part IV   - Supplemental Information
 
 
 
 ### SCHEDULE D - SUPPLEMENTAL FINANCIAL STATEMENTS (PC FILERS ONLY)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 6, 7, 8, 9, 10, 11a, 11b, 11c, 11d, 11e, 11f, 12a, or 12b.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 6, 7, 8, 9, 10, 11a, 11b, 11c, 11d, 11e, 11f, 12a, or 12b.*
 
 * Part I    - Organizations Maintaining Donor Advised Funds or Other Similar Funds or Accounts
 * Part II   - Conservation Easements
@@ -133,7 +135,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 6, 7,
 
 ### SCHEDULE E - SCHOOLS (PC AND EZ FILERS)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 13, or Form 990-EZ, Part VI, line 48.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 13, or Form 990-EZ, Part VI, line 48.*
 
 * Part I    - General Info
 * Part II   - Supplemental Information
@@ -142,7 +144,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 13, o
 
 ### SCHEDULE F - STATEMENT OF ACTIVITIES OUTSIDE THE UNITED STATES (PC FILERS ONLY)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 14b, 15, or 16.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 14b, 15, or 16.*
 
 * Part I    - General Information on Activities Outside the United States
 * Part II   - Grants and Other Assistance to Organizations or Entities Outside the United States
@@ -154,7 +156,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 14b, 
 
 ### SCHEDULE G - SUPPLEMENTAL INFORMATION REGARDING FUNDRAISING OR GAMING ACTIVITIES (PC AND EZ FILERS)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 17, 18, or 19, or if the organization entered more than $15,000 on Form 990-EZ, line 6a.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 17, 18, or 19, or if the organization entered more than $15,000 on Form 990-EZ, line 6a.*
 
 * Part I    - Fundraising Activities
 * Part II   - Fundraising Events
@@ -165,25 +167,25 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 17, 1
 
 ### SCHEDULE H - HOSPITALS (PC FILERS ONLY)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, question 20.
+*Complete if the organization answered “Yes” on Form 990, Part IV, question 20.*
 
 * Part I    - Financial Assistance and Certain Other Community Benefits at Cost
 * Part II   - Community Building Activities
 * Part III  - Bad Debt, Medicare, & Collection Practices
-            * Section A. Bad Debt Expense
-            * Section B. Medicare
-            * Section C. Collection Practices
+    * Section A. Bad Debt Expense
+    * Section B. Medicare
+    * Section C. Collection Practices
 * Part IV   - Management Companies and Joint Ventures
 * Part V    - Facility Information
-            * Section A. Hospital Facilities
-            * Section B. Facility Policies and Practices
-              * Community Health Needs Assessment
-              * Financial Assistance Policy (FAP)
-              * Billing and Collections
-              * Policy Relating to Emergency Medical Care
-              * Charges to Individuals Eligible for Assistance Under the FAP (FAP-Eligible Individuals)
-            * Section C. Supplemental Information for Part V, Section B
-            * Section D. Other Health Care Facilities That Are Not Licensed, Registered, or Similarly Recognized as a Hospital Facility
+    * Section A. Hospital Facilities
+    * Section B. Facility Policies and Practices
+        * Community Health Needs Assessment
+        * Financial Assistance Policy (FAP)
+        * Billing and Collections
+        * Policy Relating to Emergency Medical Care
+        * Charges to Individuals Eligible for Assistance Under the FAP (FAP-Eligible Individuals)
+    * Section C. Supplemental Information for Part V, Section B
+    * Section D. Other Health Care Facilities That Are Not Licensed, Registered, or Similarly Recognized as a Hospital Facility
 * Part VI   - Supplemental Information
 
 
@@ -192,7 +194,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, question 2
 
 ### SCHEDULE I - GRANTS AND OTHER ASSISTANCE TO ORGANIZATIONS, GOVERNMENTS, AND INDIVIDUALS IN THE UNITED STATES (PC FILERS ONLY)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 21 or 22
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 21 or 22.*
 
 
 * Part I    - General Information on Grants and Assistance
@@ -222,7 +224,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 23
 
 #### SCHEDULE J2 - CONTINUATION SHEET FOR FORM 990
 
-Attach to Form 990 to list additional information for Form 990, Part VII, Section A, line 1a.
+*Attach to Form 990 to list additional information for Form 990, Part VII, Section A, line 1a.*
 
 * Part I    - Continuation of Officers, Directors, Trustees, Key Employees, and Highest Compensated Employees
 
@@ -230,7 +232,7 @@ Attach to Form 990 to list additional information for Form 990, Part VII, Sectio
 
 ### SCHEDULE K - SUPPLEMENTAL INFORMATION ON TAX-EXEMPT BONDS (PC FILERS ONLY)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 24a. Provide descriptions, explanations, and any additional information in Part VI.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 24a. Provide descriptions, explanations, and any additional information in Part VI.*
 
 * Part I    - Bond Issues
 * Part II   - Proceeds
@@ -243,7 +245,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 24a. 
 
 ### SCHEDULE L - TRANSACTIONS WITH INTERESTED PERSONS (PC AND EZ FILERS)
 
-Complete if the organization answered “Yes” on Form 990, Part IV, line 25a, 25b, 26, 27, 28a, 28b, or 28c, or Form 990-EZ, Part V, line 38a or 40b.
+*Complete if the organization answered “Yes” on Form 990, Part IV, line 25a, 25b, 26, 27, 28a, 28b, or 28c, or Form 990-EZ, Part V, line 38a or 40b.*
 
 * Part I    - Excess Benefit Transactions
 * Part II   - Loans to and/or From Interested Persons
@@ -256,7 +258,7 @@ Complete if the organization answered “Yes” on Form 990, Part IV, line 25a, 
 
 ### SCHEDULE M - NONCASH CONTRIBUTIONS (PC FILERS ONLY)
 
-Complete if the organizations answered “Yes” on Form 990, Part IV, lines 29 or 30.
+*Complete if the organizations answered “Yes” on Form 990, Part IV, lines 29 or 30.*
 
 * Part I    - Types of Property
 * Part II   - Supplemental Information
@@ -266,7 +268,7 @@ Complete if the organizations answered “Yes” on Form 990, Part IV, lines 29 
 
 ### SCHEDULE N - LIQUIDATION, TERMINATION, DISSOLUTION, OR SIGNIFICANT DISPOSITION OF ASSETS (PC AND EZ FILERS)
 
-Complete if the organization answered "Yes" on Form 990, Part IV, lines 31 or 32; or Form 990-EZ, line 36.
+*Complete if the organization answered "Yes" on Form 990, Part IV, lines 31 or 32; or Form 990-EZ, line 36.*
 
 * Part I    - Liquidation, Termination, or Dissolution
 * Part II   - Sale, Exchange, Disposition, or Other Transfer of More Than 25% of the Organization’s Assets
@@ -281,7 +283,7 @@ Complete if the organization answered "Yes" on Form 990, Part IV, lines 31 or 32
 
 ### SCHEDULE R - RELATED ORGANIZATIONS AND UNRELATED PARTNERSHIPS (PC FILERS ONLY)
 
-Complete if the organization answered "Yes" on Form 990, Part IV, line 33, 34, 35b, 36, or 37.
+*Complete if the organization answered "Yes" on Form 990, Part IV, line 33, 34, 35b, 36, or 37.*
 
 * Part I    - Identification of Disregarded Entities
 * Part II   - Identification of Related Tax-Exempt Organizations
