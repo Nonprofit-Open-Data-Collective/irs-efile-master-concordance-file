@@ -1,5 +1,5 @@
 ---
-title: "Data Dictionary"
+title: "Data Dictionary for Form 990 Variables"
 output: html_document
 ---
 
@@ -13,9 +13,55 @@ library( knitr )
 
 
 
-## Index of Variable Groups ("parts")
+### 990 Variables
 
-*These groups are based upon the [2016 IRS 990 Forms and Schedules](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/tree/master/990_forms).
+This data dictionary provides documentation for all of the variables contained within a research database built using the [Master Concordance File](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/). 
+
+Since there are over 6,500 unique variables, we have created a variable name that organizes them into categories by form and groups (called "parts" on the forms). The variables are organized through a 6-letter prefix the follows the pattern: **XX_XX_XX_NAME**
+
+Each two-character code indicates the FORM, SCOPE, and LOCATION of the variable.
+
+**FORM** (see below for more info):  
+* F9 - Variable occurs on Form 990, 990-EZ, or 990-PF  
+* SA through SR - Variable occurs on Schedule A to Schedule R  
+* 3-character codes followed by a PF scope indicate auxillary scheduled for foundations
+* AF - Auxillary schedule for PF filers
+
+
+**LOCATION** - two digit code indicating the PART of the 990 form, or groups of variables.
+* 00 - Variable occurs outside of a section ("Part") on the 990 form, typically the header  
+* 01 - Variable occurs in Part I of the form  
+* 02 - Variable occurs in Part II of the form 
+* Etc. 
+
+**SCOPE**  
+* SB - Header and signature block variables that are identical across PC, EZ, and PF forms  
+* PC - Variable relevant ONLY to full form 990 nonprofit filers  
+* EZ - Variable relevant ONLY to 990-EZ nonprofit filers  
+* PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers  
+* PF - Variable relevant only to foundations  
+
+
+Note that a "variable" is different than a field on a 990 form, and that data is derived from different versions of the 990. Some variables are present across mutiple form types, while others are not. Thus a variable sometime contains data from more than one field, specifically in the case where the same field is present on both the 990-PC and the 990-EZ. These relationships are mapped out in the Master Concordance File. 
+
+<img src="../assets/variable_structure.png" width="600">
+
+In this example, revenue occurs as a Current Year Revenue on the 990-PC version, and just Revenue on the 990-EZ version. The Number of Volunteers variable only occurs on the 990-PC version, so all EZ filers will be missing this data in the database.
+
+Variable with SB scope occur either in the header or signature block on all of the forms. Since the signature block is in a different location on each form, When variables have SB scope they will always have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.
+
+
+
+
+
+
+
+
+## Variable Groups ("parts")
+
+*These groups are based upon the [2016 IRS 990 Forms and Schedules](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/tree/master/990_forms).*
+
+
 
 ### FORM 990-PC (FULL)
 
