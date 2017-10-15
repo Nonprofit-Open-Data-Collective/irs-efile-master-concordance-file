@@ -5,25 +5,27 @@ output: html_document
 
 
 
+<img src="../assets/logo.png" width="200">
 
-This page provides documentation for the Master Concordance File, the rosetta stone needed to convert IRS 990 E-Filer XML documents on AWS into structured databases.
 
-The data dictionary below describes fields in the Master Concordance File. Click here for a [data dictionary describing all variables on the 990 forms](data_dictionary.html).
+This page provides documentation for the ***Master Concordance File***, the rosetta stone needed to convert IRS 990 E-Filer XML documents [on AWS](https://aws.amazon.com/public-datasets/irs-990/) into structured databases.
 
-[Submit questions and issues here](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/issues/new).
+The data dictionary below describes fields in the Master Concordance File. Click here for a [DATA DICTIONARY](data_dictionary.html) describing all variables on the 990 forms.
+
+Submit [QUESTIONS AND ISSUES](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/issues/new) through GitHub.
 
 
 #### Acknowledgements
 
 *Created by the [Nonprofit Open Data Collective](https://nonprofit-open-data-collective.github.io/) under the [GPL-3.0](https://opensource.org/licenses/GPL-3.0) open source license for free use by all*.
 
-Many thanks to all of those that have helped generate this file, but especially to the Aspen Institute for hosting the initial ["Datathon" event](https://www.aspeninstitute.org/blog-posts/aspen-institutes-program-philanthropy-social-innovation-psi-hosts-nonprofit-datathon/), and to Miguel Barbosa at Citizen Audit for volunteering a week's worth of time to generate a large portion of the first draft of this file. 
+Many thanks to all of those that have helped generate this file, but especially to the Aspen Institute for hosting the initial ["DATATHON"](https://www.aspeninstitute.org/blog-posts/aspen-institutes-program-philanthropy-social-innovation-psi-hosts-nonprofit-datathon/)event which kicked us off, and to Miguel Barbosa at Citizen Audit for volunteering a week's worth of time to generate a large portion of the first draft of this file. 
 
 
 
 
 
-# DATA DICTIONARY 
+## DATA DICTIONARY 
 
 The MasterConcordanceFile.csv included in this repository consists of the following variables:
 
@@ -47,29 +49,35 @@ A more in-depth description of each is covered below.
 
 ### variable_name
 
-Each variable name begins with a 6-letter prefix the follows the pattern: XX_XX_XX_NAME.
+Each variable name begins with a 6-letter prefix the follows the pattern: **XX_XX_XX_NAME**
 
 Since there are over 6,500 unique variables, the prefix helps organize the variables into groups. The prefix indicates the FORM, SCOPE, and LOCATION of the variable.
 
-FORM (see below for more info):
-* F9 - Variable occurs on Form 990, 990-EZ, or 990-PF
-* SA, SB, ... SR - Variable occurs on Schedule A to Schedule R
-* 3-character codes followed by a PF scope indicate auxillary scheduled for foundations
-
-SCOPE
-* PC - Variable relevant ONLY to full form 990 nonprofit filers
-* EZ - Variable relevant ONLY to 990-EZ nonprofit filers
-* PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers
-* PF - Variable relevant only to foundations
+**FORM** (see below for more info):  
+* F9 - Variable occurs on Form 990, 990-EZ, or 990-PF  
+* SA, SB, ... SR - Variable occurs on Schedule A to Schedule R  
+* 3-character codes followed by a PF scope indicate auxillary scheduled for foundations  
 
 
-LOCATION - two digit code indicating the PART of the 990 form, or groups of variables.
-* 00 - Variable occurs outside of a section ("Part") on the 990 form, typically the header
-* 01 - Variable occurs in Part I of the form
-* 02 - Variable occurs in Part II of the form
-* Etc.
+**LOCATION** - two digit code indicating the PART of the 990 form, or groups of variables.
+* 00 - Variable occurs outside of a section ("Part") on the 990 form, typically the header  
+* 01 - Variable occurs in Part I of the form  
+* 02 - Variable occurs in Part II of the form 
+* Etc. 
+
+**SCOPE**  
+* SB - Header and signature block variables that are identical across PC, EZ, and PF forms  
+* PC - Variable relevant ONLY to full form 990 nonprofit filers  
+* EZ - Variable relevant ONLY to 990-EZ nonprofit filers  
+* PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers  
+* PF - Variable relevant only to foundations  
+
+
+*Variable with SB scope are an edge case associated with a small number of xpaths. These variables can occur either in the header or signature block. Since the signature block is in a different location on each form, When variables have SB scope they will always have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.*
 
 Each variable has been assigned a unique name. One variable might appear several times in the concordance file in circumstances where multiple xpaths map onto the same variable. This happens when xpaths have changed over different versions of the IRS e-filer schema, or when the same variable occurs on both the 990-PC and 990-EZ forms.
+
+
 
 
 ### description
@@ -229,29 +237,29 @@ Some fields have a one-to-many relationship. There are many board members for ea
 
 The names of tables will follow this convention:
 
-OTO-PC-TABLE_NAME
-OTM-PF-TABLE_NAME
-HEADER
+OTO-PC-TABLE_NAME  
+OTM-PF-TABLE_NAME  
+HEADER  
 
-OTO = one-to-one relationships only
-OTM = one-to-many relationships
-PC / EZ / PZ / PF / SB = scope codes
-TABLE_NAME - informative name describing group of variables (for example, compensation, expenses, etc.)
+* OTO = one-to-one relationships only  
+* OTM = one-to-many relationships   
+* PC / EZ / PZ / PF / SB = scope codes  
+* TABLE_NAME - informative name describing group of variables (for example, compensation, expenses, etc.)  
 
 Every table should include the following header variables to ensure they can be joined properly (these variables are designated by the table name "HEADER"):
 
-* Nonprofit name
-* Nonprofit EIN
-* Form
-* Tax year
-* Submission version / timestamp
+* Nonprofit name 
+* Nonprofit EIN 
+* Form 
+* Tax year 
+* Submission version / timestamp 
 
 In the future consider adding the variables to tables for ease of subsetting:
 
-* NTEE codes (or other system)
-* Organizational type (charity, community foundation, supporting nonprofit, etc.)
-* Geography (state, MSA, city, zip, county)
-* Size (5 ranges)
+* NTEE codes (or other system)  
+* Organizational type (charity, community foundation, supporting nonprofit, etc.)  
+* Geography (state, MSA, city, zip, county)  
+* Size (5 ranges)  
 
 
 
@@ -313,9 +321,19 @@ table
     margin-bottom:100px;
 }
 
-h1, h2{
+h1{
   margin-top:100px;
   margin-bottom:20px;
+  text-align: center;
+  color: white;
+  background: black;
+}
+
+h2{
+  margin-top:100px;
+  margin-bottom:20px;
+  font-family: "Century Gothic";
+  font-size: 40px;
 }
 
 h3{
