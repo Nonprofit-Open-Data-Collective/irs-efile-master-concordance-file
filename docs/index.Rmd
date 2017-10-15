@@ -13,7 +13,7 @@ The data dictionary below describes fields in the Master Concordance File. Click
 [Submit questions and issues here](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/issues/new).
 
 
-### Acknowledgements
+#### Acknowledgements
 
 *Created by the [Nonprofit Open Data Collective](https://nonprofit-open-data-collective.github.io/) under the [GPL-3.0](https://opensource.org/licenses/GPL-3.0) open source license for free use by all*.
 
@@ -45,7 +45,7 @@ A more in-depth description of each is covered below.
 
 
 
-### VARIABLE_NAME
+### variable_name
 
 Each variable name begins with a 6-letter prefix the follows the pattern: XX_XX_XX_NAME.
 
@@ -72,12 +72,12 @@ LOCATION - two digit code indicating the PART of the 990 form, or groups of vari
 Each variable has been assigned a unique name. One variable might appear several times in the concordance file in circumstances where multiple xpaths map onto the same variable. This happens when xpaths have changed over different versions of the IRS e-filer schema, or when the same variable occurs on both the 990-PC and 990-EZ forms.
 
 
-### DESCRIPTION
+### description
 
 Definition of the variable based upon information on the 990 forms.
 
 
-### SCOPE
+### scope
 
 <img src="../assets/variable_scope.png" width="600">
 
@@ -117,7 +117,7 @@ Some schedules are only relevant for nonprofits filing the full 990-PC form. The
 
 
 
-### LOCATION_CODE
+### location_code
 
 <img src="../assets/location_code_example_1.png" width="600">
 <img src="../assets/location_code_example_2.png" width="600">
@@ -137,7 +137,7 @@ Some foundations are requird to submit auxillary schedules. These are indicated 
 
 
 
-### FORM
+### form
 
 A 2 or 3-character code representing the form or schedule from which the variable is derived.
 
@@ -212,7 +212,7 @@ TUS | 990-PF Auxillary Schedule | 2
 EBT | 990-PF Auxillary Schedule | 1 
 
 
-### PART
+### part
 
 Reports the location of the field on the 990 forms for ease of look-up and to organize variables by groups.
 
@@ -221,16 +221,41 @@ Reports the location of the field on the 990 forms for ease of look-up and to or
 
 
 
-### RDB_TABLE
+### rdb_table
 
 This field (*not yet implemented*) provides a relational database structure for the data. Many fields in the dataset are one-to-one, meaning for each nonprofit there will be a unique value. These fields appear on the main table for the form.
 
 Some fields have a one-to-many relationship. There are many board members for each nonprofit, there are several program activities reported, etc. In these cases, each new table defines a set of fields that function together. A compensation table. A nonprofit activities table. Etc.
 
+The names of tables will follow this convention:
+
+OTO-PC-TABLE_NAME
+OTM-PF-TABLE_NAME
+HEADER
+
+OTO = one-to-one relationships only
+OTM = one-to-many relationships
+PC / EZ / PZ / PF / SB = scope codes
+TABLE_NAME - informative name describing group of variables (for example, compensation, expenses, etc.)
+
+Every table should include the following header variables to ensure they can be joined properly (these variables are designated by the table name "HEADER"):
+
+* Nonprofit name
+* Nonprofit EIN
+* Form
+* Tax year
+* Submission version / timestamp
+
+In the future consider adding the variables to tables for ease of subsetting:
+
+* NTEE codes (or other system)
+* Organizational type (charity, community foundation, supporting nonprofit, etc.)
+* Geography (state, MSA, city, zip, county)
+* Size (5 ranges)
 
 
 
-### PRODUCTION_RULE
+### production_rule
 
 Xpaths contained in the Master Concordance File are used to extract data from XML files and convert it into a more structured format. Production rules represent anything that should be done to the raw data after it is extracted from XML files to standardize the data or make it more useful.
 
@@ -238,7 +263,7 @@ For example, in some versions of forms a checked checkbox will be represented as
 
 
 
-### XPATH
+### xpath
 
 The "address" of the variable on the XML forms released on Amazon.
 
@@ -246,14 +271,14 @@ For an overview of using xpaths in R, see the [Quick Guide to XML in R](Quick_Gu
 
 
 
-### VERSION
+### version
 
 The IRS has revised the 990 and updated e-filing forms many times. This field contains the XSD version information necessary to match schemas to XML documents.
 
 
 
 
-### REQUIRED
+### required
 
 Is the specific field required for the particular filer in order to submit your 990 data to the IRS? 
 
@@ -296,6 +321,7 @@ h1, h2{
 h3{
   margin-top:50px;
   margin-bottom:20px;
+  background: lightgray;
 }
 
 H5{
