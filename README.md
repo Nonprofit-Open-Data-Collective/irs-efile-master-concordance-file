@@ -15,18 +15,21 @@ Follow the [MCF DOCUMENTATION](https://nonprofit-open-data-collective.github.io/
 
 The [efiler_master_concordance.csv](efiler_master_concordance.csv) included in this repository consists of the following variables:
 
-* **varianble_name** - Name of research database variable
+* **variable_name** - Name of research database variable
 * **description** - Definition of the variable, derived from 990 forms
 * **scope** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
 * **location_code** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
 * **form** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
 * **part** - Location of the field on the form
-* **rdb_table** - Tables for organizing the data into a relational database
-* **production_rule** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
+* **data_type** - Data field type (number, character, address, date, currency, etc.)  
+* **required** - Indicates whether nonprofit filers are required to complete this field  
+* **cardinality** - Is the variable-to-nonprofit relationship one-to-one or one-to-many
+* **rdb_table** - Tables for organizing the data into a relational database  
 * **xpath** - XML address for the data
-* **xsd_version** - The XSD schema version that the xpath belongs to
-* **required** - Indicates whether nonprofit filers are required to complete this field
-* **notes** - Additional notes about variables from programmers and users
+* **version** - The XSD schema version that the xpath belongs to
+* **production_rule** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
+* **last_version_modified** - Most recent date the row of data was updated
+
 
 A more in-depth description of each variable is available [HERE](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/).
 
