@@ -133,20 +133,102 @@ $(document).ready(function () {
 <h2>DATA DICTIONARY</h2>
 <p>The MasterConcordanceFile.csv included in this repository consists of the following variables:</p>
 <ul>
-<li><strong>VARIABLE_NAME</strong> - Name of research database variable</li>
-<li><strong>DESCRIPTION</strong> - Definition of the variable, derived from 990 forms</li>
-<li><strong>SCOPE</strong> - Filers to which the variable pertains (small charities, large charities, all charities, foundations)</li>
-<li><strong>LOCATION_CODE</strong> - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules</li>
-<li><strong>FORM</strong> - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R</li>
-<li><strong>PART</strong> - Location of the field on the form</li>
-<li><strong>RDB_TABLE</strong> - Tables for organizing the data into a relational database</li>
-<li><strong>PRODUCTION_RULE</strong> - Rules which should be applied to the raw data after extraction to ensure it is meaningful</li>
-<li><strong>XPATH</strong> - XML address for the data</li>
-<li><strong>VERSION</strong> - The XSD schema version that the xpath belongs to</li>
-<li><strong>REQUIRED</strong> - Indicates whether nonprofit filers are required to complete this field</li>
-<li><strong>NOTES</strong> - Additional notes about variables from programmers and users</li>
+<li><strong>variable_name</strong> - Name of research database variable</li>
+<li><strong>description</strong> - Definition of the variable, derived from 990 forms</li>
+<li><strong>scope</strong> - Filers to which the variable pertains (small charities, large charities, all charities, foundations)</li>
+<li><strong>location_code</strong> - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules</li>
+<li><strong>form</strong> - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R</li>
+<li><strong>part</strong> - Location of the field on the form</li>
+<li><strong>data_type</strong> - Data field type (number, character, address, date, currency, etc.)<br />
+</li>
+<li><strong>required</strong> - Indicates whether nonprofit filers are required to complete this field<br />
+</li>
+<li><strong>cardinality</strong> - Is the variable-to-nonprofit relationship one-to-one or one-to-many</li>
+<li><strong>rdb_table</strong> - Tables for organizing the data into a relational database<br />
+</li>
+<li><strong>xpath</strong> - XML address for the data</li>
+<li><strong>version</strong> - The XSD schema version that the xpath belongs to</li>
+<li><strong>production_rule</strong> - Rules which should be applied to the raw data after extraction to ensure it is meaningful</li>
+<li><strong>last_version_modified</strong> - Most recent date the row of data was updated</li>
 </ul>
-<p>A more in-depth description of each is covered below.</p>
+<p>A more in-depth description of each variable is covered below.</p>
+<p>The current status of each of these fields is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FIELD</th>
+<th align="left">STATUS</th>
+<th align="left">VALIDATED?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">variable_name</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">Complete</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">scope</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">location_code</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">form</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">part</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">data_type</td>
+<td align="left">In Progress</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">required</td>
+<td align="left">In Progress</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">cardinality</td>
+<td align="left">No Data Yet</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="left">rdb_table</td>
+<td align="left">No Data Yet</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">xpath</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="odd">
+<td align="left">production_rule</td>
+<td align="left">No Data Yet</td>
+<td align="left">NO</td>
+</tr>
+</tbody>
+</table>
 <div id="variable_name" class="section level3">
 <h3>variable_name</h3>
 <p>Each variable name begins with a 6-letter prefix the follows the pattern: <strong>XX_XX_XX_NAME</strong></p>
@@ -159,7 +241,7 @@ $(document).ready(function () {
 * 01 - Variable occurs in Part I of the form<br />
 * 02 - Variable occurs in Part II of the form * Etc.</p>
 <p><strong>SCOPE</strong><br />
-* SB - Header and signature block variables that are identical across PC, EZ, and PF forms<br />
+* HD - Header and signature block variables that are identical across PC, EZ, and PF forms<br />
 * PC - Variable relevant ONLY to full form 990 nonprofit filers<br />
 * EZ - Variable relevant ONLY to 990-EZ nonprofit filers<br />
 * PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers<br />
@@ -179,6 +261,7 @@ $(document).ready(function () {
 <p>All foundations file the same form. All of the variables from that form are designated by the PF (private foundation) scope code.</p>
 <p>If we want to conduct a study on the population of active nonprofits then we need to rely on the PZ subset of variables.</p>
 <ul>
+<li><strong>HD</strong> - Header and signature block variables relevant to ALL filers (PC, EZ, and PF)</li>
 <li><strong>PC</strong> - Variable present ONLY on the full 990-PC form for public charities / nonprofits</li>
 <li><strong>EZ</strong> - Variable present ONLY on the 990-EZ form for charities / nonprofits</li>
 <li><strong>PZ</strong> - Variable present on BOTH the PC and EZ versions for charities / nonprofits</li>
@@ -216,350 +299,124 @@ $(document).ready(function () {
 </div>
 <div id="form" class="section level3">
 <h3>form</h3>
-<p>A 2 or 3-character code representing the form or schedule from which the variable is derived.</p>
+<p>A 2-character code representing the form or schedule from which the variable is derived.</p>
 <table>
 <thead>
 <tr class="header">
-<th>CODE</th>
-<th>FORM</th>
-<th>NUMBER OF ASSOCIATED XPATHS</th>
+<th align="left">FORM_CODE</th>
+<th align="left">FORM_NAME</th>
+<th align="right">NUMBER_OF_ASSOCIATED_VARIABLES</th>
+<th align="right">NUMBER_OF_ASSOCIATED_XPATHS</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>F9</td>
-<td>Form 990</td>
-<td>4534</td>
+<td align="left">F9</td>
+<td align="left">F990</td>
+<td align="right">2720</td>
+<td align="right">4257</td>
 </tr>
 <tr class="even">
-<td>SA</td>
-<td>Schedule A</td>
-<td>977</td>
+<td align="left">AF</td>
+<td align="left">PF-AUX-SCHED</td>
+<td align="right">527</td>
+<td align="right">707</td>
 </tr>
 <tr class="odd">
-<td>SB</td>
-<td>Schedule B</td>
-<td>1303</td>
+<td align="left">SA</td>
+<td align="left">SCHED-A</td>
+<td align="right">603</td>
+<td align="right">977</td>
 </tr>
 <tr class="even">
-<td>SC</td>
-<td>Schedule C</td>
-<td>321</td>
+<td align="left">SB</td>
+<td align="left">SCHED-B</td>
+<td align="right">102</td>
+<td align="right">130</td>
 </tr>
 <tr class="odd">
-<td>SD</td>
-<td>Schedule D</td>
-<td>436</td>
+<td align="left">SC</td>
+<td align="left">SCHED-C</td>
+<td align="right">177</td>
+<td align="right">321</td>
 </tr>
 <tr class="even">
-<td>SE</td>
-<td>Schedlue E</td>
-<td>70</td>
+<td align="left">SD</td>
+<td align="left">SCHED-D</td>
+<td align="right">269</td>
+<td align="right">436</td>
 </tr>
 <tr class="odd">
-<td>SF</td>
-<td>Schedule F</td>
-<td>116</td>
+<td align="left">SE</td>
+<td align="left">SCHED-E</td>
+<td align="right">64</td>
+<td align="right">70</td>
 </tr>
 <tr class="even">
-<td>SG</td>
-<td>Schedule G</td>
-<td>482</td>
+<td align="left">SF</td>
+<td align="left">SCHED-F</td>
+<td align="right">92</td>
+<td align="right">116</td>
 </tr>
 <tr class="odd">
-<td>SH</td>
-<td>Schedule H</td>
-<td>863</td>
+<td align="left">SG</td>
+<td align="left">SCHED-G</td>
+<td align="right">301</td>
+<td align="right">482</td>
 </tr>
 <tr class="even">
-<td>SI</td>
-<td>Schedule I</td>
-<td>102</td>
+<td align="left">SH</td>
+<td align="left">SCHED-H</td>
+<td align="right">669</td>
+<td align="right">863</td>
 </tr>
 <tr class="odd">
-<td>SJ</td>
-<td>Schedule J</td>
-<td>121</td>
+<td align="left">SI</td>
+<td align="left">SCHED-I</td>
+<td align="right">64</td>
+<td align="right">102</td>
 </tr>
 <tr class="even">
-<td>SK</td>
-<td>Schedule K</td>
-<td>151</td>
+<td align="left">SJ</td>
+<td align="left">SCHED-J</td>
+<td align="right">84</td>
+<td align="right">121</td>
 </tr>
 <tr class="odd">
-<td>SL</td>
-<td>Schedule L</td>
-<td>108</td>
+<td align="left">SK</td>
+<td align="left">SCHED-K</td>
+<td align="right">144</td>
+<td align="right">151</td>
 </tr>
 <tr class="even">
-<td>SM</td>
-<td>Schedule M</td>
-<td>315</td>
+<td align="left">SL</td>
+<td align="left">SCHED-L</td>
+<td align="right">82</td>
+<td align="right">108</td>
 </tr>
 <tr class="odd">
-<td>SN</td>
-<td>Schedule N</td>
-<td>220</td>
+<td align="left">SM</td>
+<td align="left">SCHED-M</td>
+<td align="right">197</td>
+<td align="right">315</td>
 </tr>
 <tr class="even">
-<td>SO</td>
-<td>Schedule O</td>
-<td>6</td>
+<td align="left">SN</td>
+<td align="left">SCHED-N</td>
+<td align="right">156</td>
+<td align="right">220</td>
 </tr>
 <tr class="odd">
-<td>SR</td>
-<td>Schedule R</td>
-<td>417</td>
+<td align="left">SO</td>
+<td align="left">SCHED-O</td>
+<td align="right">6</td>
+<td align="right">6</td>
 </tr>
 <tr class="even">
-<td>TFC</td>
-<td>990-PF Auxillary Schedule</td>
-<td>62</td>
-</tr>
-<tr class="odd">
-<td>ERS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>57</td>
-</tr>
-<tr class="even">
-<td>BFE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>47</td>
-</tr>
-<tr class="odd">
-<td>TTC</td>
-<td>990-PF Auxillary Schedule</td>
-<td>47</td>
-</tr>
-<tr class="even">
-<td>DDI</td>
-<td>990-PF Auxillary Schedule</td>
-<td>45</td>
-</tr>
-<tr class="odd">
-<td>SCS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>41</td>
-</tr>
-<tr class="even">
-<td>GLS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>39</td>
-</tr>
-<tr class="odd">
-<td>MNP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>34</td>
-</tr>
-<tr class="even">
-<td>ONL</td>
-<td>990-PF Auxillary Schedule</td>
-<td>30</td>
-</tr>
-<tr class="odd">
-<td>ORO</td>
-<td>990-PF Auxillary Schedule</td>
-<td>26</td>
-</tr>
-<tr class="even">
-<td>LFO</td>
-<td>990-PF Auxillary Schedule</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td>DSD</td>
-<td>990-PF Auxillary Schedule</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td>ASA</td>
-<td>990-PF Auxillary Schedule</td>
-<td>18</td>
-</tr>
-<tr class="odd">
-<td>OIS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>14</td>
-</tr>
-<tr class="even">
-<td>CEC</td>
-<td>990-PF Auxillary Schedule</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>AFS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>CCE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>ILS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>LES</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>LFS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>OES</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>OPF</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>TST</td>
-<td>990-PF Auxillary Schedule</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>IOS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>IGO</td>
-<td>990-PF Auxillary Schedule</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>OAS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>ONS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>SOI</td>
-<td>990-PF Auxillary Schedule</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>GEA</td>
-<td>990-PF Auxillary Schedule</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>ICB</td>
-<td>990-PF Auxillary Schedule</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>ICS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>ODS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>OLS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>AOP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>ECE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>GLP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>ANP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>ATP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>CDC</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>CDE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>DFC</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>ELP</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>ENF</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>LEE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>OCN</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>RCE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>RSE</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>SES</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>TUS</td>
-<td>990-PF Auxillary Schedule</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>EBT</td>
-<td>990-PF Auxillary Schedule</td>
-<td>1</td>
+<td align="left">SR</td>
+<td align="left">SCHED-R</td>
+<td align="right">328</td>
+<td align="right">417</td>
 </tr>
 </tbody>
 </table>
@@ -569,20 +426,204 @@ $(document).ready(function () {
 <p>Reports the location of the field on the 990 forms for ease of look-up and to organize variables by groups.</p>
 <p><em>Note that PZ fields occur on both the 990-PC and 990-EZ forms. The part code references the location on the full 990-PC form, which will rarely be in the same place on the 990-EZ form. If you need the location of PZ variables on the EZ form use the location codes instead.</em></p>
 </div>
+<div id="data_type" class="section level3">
+<h3>data_type</h3>
+<p>Field data type, derived from IRS XSD schema files.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data_Type</th>
+<th align="right">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">USAmountType</td>
+<td align="right">1638</td>
+</tr>
+<tr class="even">
+<td align="left">BooleanType</td>
+<td align="right">764</td>
+</tr>
+<tr class="odd">
+<td align="left">USAmountNNType</td>
+<td align="right">575</td>
+</tr>
+<tr class="even">
+<td align="left">CheckboxType</td>
+<td align="right">530</td>
+</tr>
+<tr class="odd">
+<td align="left">StreetAddressType</td>
+<td align="right">233</td>
+</tr>
+<tr class="even">
+<td align="left">IntegerNNType</td>
+<td align="right">215</td>
+</tr>
+<tr class="odd">
+<td align="left">LineExplanationType</td>
+<td align="right">209</td>
+</tr>
+<tr class="even">
+<td align="left">TextType</td>
+<td align="right">172</td>
+</tr>
+<tr class="odd">
+<td align="left">BusinessNameLine1Type</td>
+<td align="right">140</td>
+</tr>
+<tr class="even">
+<td align="left">BusinessNameLine2Type</td>
+<td align="right">119</td>
+</tr>
+<tr class="odd">
+<td align="left">StateType</td>
+<td align="right">96</td>
+</tr>
+<tr class="even">
+<td align="left">RatioType</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">CityType</td>
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="left">CountryType</td>
+<td align="right">75</td>
+</tr>
+<tr class="odd">
+<td align="left">ExplanationType</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">ZIPCodeType</td>
+<td align="right">73</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">71</td>
+</tr>
+<tr class="even">
+<td align="left">ShortExplanationType</td>
+<td align="right">52</td>
+</tr>
+<tr class="odd">
+<td align="left">PersonNameType</td>
+<td align="right">50</td>
+</tr>
+<tr class="even">
+<td align="left">StringType</td>
+<td align="right">49</td>
+</tr>
+<tr class="odd">
+<td align="left">EINType</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">LargeRatioType</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="left">CountType</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="left">DateType</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">ShortDescriptionType</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">IntegerType</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">PhoneNumberType</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">Count2Type</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">YearType</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">xsd:decimal</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">DecimalNNType</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">BusinessNameControlType</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">CUSIPNumberType</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">PersonTitleType</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">PTINType</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">SSNType</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">TimestampType</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">AlphaNumericType</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">InCareOfNameType</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="required" class="section level3">
+<h3>required</h3>
+<p>Is the specific field required for the particular filer in order to submit your 990 data to the IRS?</p>
+<p>The e-filing system provides some validation to ensure necessary fields are complete. It may not be strictly enforced, though.</p>
+</div>
+<div id="cardinality" class="section level3">
+<h3>cardinality</h3>
+<p>Definition of the variable relationship to the filing nonprofit.</p>
+<ul>
+<li><strong>ONE-TO-ONE</strong> - Each of these variable occurs only one time on the 990 return</li>
+</ul>
+<p>Examples include nonprofit name and nonprofit EIN - values that are unique and occur once on the form.</p>
+<ul>
+<li><strong>ONE-TO-MANY</strong> - Variables that can occur many times on a return</li>
+</ul>
+<p>Examples include grants given, names of board members, and program accomplishments - anything that might occur multiple times on a 990 return.</p>
+</div>
 <div id="rdb_table" class="section level3">
 <h3>rdb_table</h3>
 <p>This field (<em>not yet implemented</em>) provides a relational database structure for the data. Many fields in the dataset are one-to-one, meaning for each nonprofit there will be a unique value. These fields appear on the main table for the form.</p>
 <p>Some fields have a one-to-many relationship. There are many board members for each nonprofit, there are several program activities reported, etc. In these cases, each new table defines a set of fields that function together. A compensation table. A nonprofit activities table. Etc.</p>
 <p>The names of tables will follow this convention:</p>
-<p>OTO-PC-TABLE_NAME<br />
-OTM-PF-TABLE_NAME<br />
-HEADER</p>
+<p><strong>HEADER</strong> - Table of unique (OTO) header data for each nonprofit / foundation <strong>PC-OTO-TABLE_NAME</strong> - One-to-one table from the 990-PC form <strong>SA-OTM-TABLE_NAME</strong> - One-to-many table from Schedule A</p>
 <ul>
+<li>PC / EZ / PZ / PF = scope codes (if scope = HD then table name = HEADER)</li>
 <li>OTO = one-to-one relationships only<br />
 </li>
 <li>OTM = one-to-many relationships<br />
-</li>
-<li>PC / EZ / PZ / PF / SB = scope codes<br />
 </li>
 <li>TABLE_NAME - informative name describing group of variables (for example, compensation, expenses, etc.)</li>
 </ul>
@@ -593,6 +634,7 @@ HEADER</p>
 <li>Form</li>
 <li>Tax year</li>
 <li>Submission version / timestamp</li>
+<li>Document Locator Number for the return</li>
 </ul>
 <p>In the future consider adding the variables to tables for ease of subsetting:</p>
 <ul>
@@ -605,11 +647,6 @@ HEADER</p>
 <li>Size (5 ranges)</li>
 </ul>
 </div>
-<div id="production_rule" class="section level3">
-<h3>production_rule</h3>
-<p>Xpaths contained in the Master Concordance File are used to extract data from XML files and convert it into a more structured format. Production rules represent anything that should be done to the raw data after it is extracted from XML files to standardize the data or make it more useful.</p>
-<p>For example, in some versions of forms a checked checkbox will be represented as an “X”, and in others as a “Y” or “1”. These all mean the same thing, so they should be re-coded with the same value. This is a suggested production rule.</p>
-</div>
 <div id="xpath" class="section level3">
 <h3>xpath</h3>
 <p>The “address” of the variable on the XML forms released on Amazon.</p>
@@ -619,10 +656,14 @@ HEADER</p>
 <h3>version</h3>
 <p>The IRS has revised the 990 and updated e-filing forms many times. This field contains the XSD version information necessary to match schemas to XML documents.</p>
 </div>
-<div id="required" class="section level3">
-<h3>required</h3>
-<p>Is the specific field required for the particular filer in order to submit your 990 data to the IRS?</p>
-<p>The e-filing system provides some validation to ensure necessary fields are complete. It may not be strictly enforced, though.</p>
+<div id="production_rule" class="section level3">
+<h3>production_rule</h3>
+<p>Xpaths contained in the Master Concordance File are used to extract data from XML files and convert it into a more structured format. Production rules represent anything that should be done to the raw data after it is extracted from XML files to standardize the data or make it more useful.</p>
+<p>For example, in some versions of forms a checked checkbox will be represented as an “X”, and in others as a “Y” or “1”. These all mean the same thing, so they should be re-coded with the same value. This is a suggested production rule.</p>
+</div>
+<div id="last_version_modified" class="section level3">
+<h3>last_version_modified</h3>
+<p>This field contains a record of when specific variables have been last updated.</p>
 <style type="text/css">
 p {
 color: black;
@@ -631,7 +672,7 @@ margin: 0 0 20px 0;
 
 td {
     padding: 3px 10px 3px 10px;
-    text-align: center;
+    text-align: left;
 }
 
 table

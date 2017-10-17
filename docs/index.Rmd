@@ -29,21 +29,41 @@ Many thanks to all of those that have helped generate this file, but especially 
 
 The MasterConcordanceFile.csv included in this repository consists of the following variables:
 
-* **VARIABLE_NAME** - Name of research database variable
-* **DESCRIPTION** - Definition of the variable, derived from 990 forms
-* **SCOPE** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
-* **LOCATION_CODE** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
-* **FORM** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
-* **PART** - Location of the field on the form
-* **RDB_TABLE** - Tables for organizing the data into a relational database
-* **PRODUCTION_RULE** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
-* **XPATH** - XML address for the data
-* **VERSION** - The XSD schema version that the xpath belongs to
-* **REQUIRED** - Indicates whether nonprofit filers are required to complete this field
-* **NOTES** - Additional notes about variables from programmers and users
+* **variable_name** - Name of research database variable
+* **description** - Definition of the variable, derived from 990 forms
+* **scope** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
+* **location_code** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
+* **form** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
+* **part** - Location of the field on the form
+* **data_type** - Data field type (number, character, address, date, currency, etc.)  
+* **required** - Indicates whether nonprofit filers are required to complete this field  
+* **cardinality** - Is the variable-to-nonprofit relationship one-to-one or one-to-many
+* **rdb_table** - Tables for organizing the data into a relational database  
+* **xpath** - XML address for the data
+* **version** - The XSD schema version that the xpath belongs to
+* **production_rule** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
+* **last_version_modified** - Most recent date the row of data was updated
 
-A more in-depth description of each is covered below.
+A more in-depth description of each variable is covered below.
 
+The current status of each of these fields is:
+
+
+FIELD  |  STATUS  |  VALIDATED?
+:------|:---------|:------------
+variable_name | Complete | YES  
+description | Complete | Yes  
+scope | Complete | NO  
+location_code | Complete | NO  
+form | Complete | YES  
+part | Complete | NO  
+data_type | In Progress | NO  
+required | In Progress | NO  
+cardinality | No Data Yet | No  
+rdb_table | No Data Yet | NO  
+xpath | Complete | YES  
+version | Complete | YES  
+production_rule | No Data Yet | NO  
 
 
 
@@ -66,7 +86,7 @@ Since there are over 6,500 unique variables, the prefix helps organize the varia
 * Etc. 
 
 **SCOPE**  
-* SB - Header and signature block variables that are identical across PC, EZ, and PF forms  
+* HD - Header and signature block variables that are identical across PC, EZ, and PF forms  
 * PC - Variable relevant ONLY to full form 990 nonprofit filers  
 * EZ - Variable relevant ONLY to 990-EZ nonprofit filers  
 * PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers  
@@ -97,6 +117,7 @@ All foundations file the same form. All of the variables from that form are desi
 
 If we want to conduct a study on the population of active nonprofits then we need to rely on the PZ subset of variables.
 
+* **HD** - Header and signature block variables relevant to ALL filers (PC, EZ, and PF) 
 * **PC** - Variable present ONLY on the full 990-PC form for public charities / nonprofits 
 * **EZ** - Variable present ONLY on the 990-EZ form for charities / nonprofits 
 * **PZ** - Variable present on BOTH the PC and EZ versions for charities / nonprofits 
@@ -147,77 +168,39 @@ Some foundations are requird to submit auxillary schedules. These are indicated 
 
 ### form
 
-A 2 or 3-character code representing the form or schedule from which the variable is derived.
+A 2-character code representing the form or schedule from which the variable is derived.
 
-CODE | FORM | NUMBER OF ASSOCIATED XPATHS |
------|------|------------------|
-F9 | Form 990 | 4534 
-SA  | Schedule A | 977 
-SB | Schedule B |  1303 
-SC  | Schedule C | 321 
-SD | Schedule D | 436 
-SE | Schedlue E | 70 
-SF | Schedule F | 116 
-SG | Schedule G | 482 
-SH | Schedule H | 863 
-SI | Schedule I | 102 
-SJ | Schedule J  | 121 
-SK | Schedule K | 151 
-SL | Schedule L | 108 
-SM | Schedule M | 315 
-SN | Schedule N | 220 
-SO | Schedule O | 6 
-SR | Schedule R | 417 
-TFC | 990-PF Auxillary Schedule | 62 
-ERS | 990-PF Auxillary Schedule | 57 
-BFE | 990-PF Auxillary Schedule | 47 
-TTC | 990-PF Auxillary Schedule | 47 
-DDI | 990-PF Auxillary Schedule | 45 
-SCS | 990-PF Auxillary Schedule | 41 
-GLS | 990-PF Auxillary Schedule | 39 
-MNP | 990-PF Auxillary Schedule | 34 
-ONL | 990-PF Auxillary Schedule | 30 
-ORO | 990-PF Auxillary Schedule | 26 
-LFO | 990-PF Auxillary Schedule | 24 
-DSD | 990-PF Auxillary Schedule | 22 
-ASA | 990-PF Auxillary Schedule | 18 
-OIS | 990-PF Auxillary Schedule | 14 
-CEC | 990-PF Auxillary Schedule | 11 
-AFS | 990-PF Auxillary Schedule | 10 
-CCE | 990-PF Auxillary Schedule | 10 
-ILS | 990-PF Auxillary Schedule | 10 
-LES | 990-PF Auxillary Schedule | 10 
-LFS | 990-PF Auxillary Schedule | 10 
-OES | 990-PF Auxillary Schedule | 10 
-OPF | 990-PF Auxillary Schedule | 10 
-TST | 990-PF Auxillary Schedule | 10 
-IOS | 990-PF Auxillary Schedule | 9 
-IGO | 990-PF Auxillary Schedule | 8 
-OAS | 990-PF Auxillary Schedule | 8 
-ONS | 990-PF Auxillary Schedule | 8 
-SOI | 990-PF Auxillary Schedule | 8 
-GEA | 990-PF Auxillary Schedule | 6 
-ICB | 990-PF Auxillary Schedule | 6 
-ICS | 990-PF Auxillary Schedule | 6 
-ODS | 990-PF Auxillary Schedule | 6 
-OLS | 990-PF Auxillary Schedule | 6 
-AOP | 990-PF Auxillary Schedule | 4 
-ECE | 990-PF Auxillary Schedule | 4 
-GLP | 990-PF Auxillary Schedule | 4 
-ANP | 990-PF Auxillary Schedule | 2 
-ATP | 990-PF Auxillary Schedule | 2 
-CDC | 990-PF Auxillary Schedule | 2 
-CDE | 990-PF Auxillary Schedule | 2 
-DFC | 990-PF Auxillary Schedule | 2 
-ELP | 990-PF Auxillary Schedule | 2 
-ENF | 990-PF Auxillary Schedule | 2 
-LEE | 990-PF Auxillary Schedule | 2 
-OCN | 990-PF Auxillary Schedule | 2 
-RCE | 990-PF Auxillary Schedule | 2 
-RSE | 990-PF Auxillary Schedule | 2 
-SES | 990-PF Auxillary Schedule | 2 
-TUS | 990-PF Auxillary Schedule | 2 
-EBT | 990-PF Auxillary Schedule | 1 
+```{r, warning=F, message=F, echo=F}
+
+library( knitr )
+
+dat <- read.csv( "../efiler_master_concordance.csv" )
+
+
+
+t1 <- table( dat$form )
+
+t2 <- tapply( dat$variable_name, dat$form, function(x){ length( unique(x) ) } )
+
+d <- data.frame( t1, t2 )
+
+row.names( d ) <- NULL
+
+temp.form <- substr( dat$variable_name, 1, 2 )
+
+to.merge <- unique( data.frame( code=temp.form, form=dat$form  ) )
+
+d <- merge( to.merge, d, by.x="form", by.y="Var1" )
+
+names(d) <- c("FORM_NAME","FORM_CODE","NUMBER_OF_ASSOCIATED_XPATHS","NUMBER_OF_ASSOCIATED_VARIABLES")
+
+d <- d[ c("FORM_CODE","FORM_NAME","NUMBER_OF_ASSOCIATED_VARIABLES","NUMBER_OF_ASSOCIATED_XPATHS") ]
+
+kable( d )
+
+```
+
+
 
 
 ### part
@@ -225,6 +208,46 @@ EBT | 990-PF Auxillary Schedule | 1
 Reports the location of the field on the 990 forms for ease of look-up and to organize variables by groups.
 
 *Note that PZ fields occur on both the 990-PC and 990-EZ forms. The part code references the location on the full 990-PC form, which will rarely be in the same place on the 990-EZ form. If you need the location of PZ variables on the EZ form use the location codes instead.*
+
+
+### data_type
+
+Field data type, derived from IRS XSD schema files. 
+
+```{r, echo=F}
+
+df1 <- as.data.frame( sort( table( dat$data_type ), T ) )
+
+names( df1 ) <- c("Data_Type","Frequency" )
+
+kable( df1  )
+
+```
+
+
+
+
+### required
+
+Is the specific field required for the particular filer in order to submit your 990 data to the IRS? 
+
+The e-filing system provides some validation to ensure necessary fields are complete. It may not be strictly enforced, though.
+
+
+
+
+
+### cardinality
+
+Definition of the variable relationship to the filing nonprofit. 
+
+* **ONE-TO-ONE** - Each of these variable occurs only one time on the 990 return
+
+Examples include nonprofit name and nonprofit EIN - values that are unique and occur once on the form.
+
+* **ONE-TO-MANY** - Variables that can occur many times on a return
+
+Examples include grants given, names of board members, and program accomplishments - anything that might occur multiple times on a 990 return.
 
 
 
@@ -237,13 +260,15 @@ Some fields have a one-to-many relationship. There are many board members for ea
 
 The names of tables will follow this convention:
 
-OTO-PC-TABLE_NAME  
-OTM-PF-TABLE_NAME  
-HEADER  
+**HEADER** - Table of unique (OTO) header data for each nonprofit / foundation
+**PC-OTO-TABLE_NAME** - One-to-one table from the 990-PC form
+**SA-OTM-TABLE_NAME** - One-to-many table from Schedule A
 
+
+
+* PC / EZ / PZ / PF = scope codes (if scope = HD then table name = HEADER) 
 * OTO = one-to-one relationships only  
 * OTM = one-to-many relationships   
-* PC / EZ / PZ / PF / SB = scope codes  
 * TABLE_NAME - informative name describing group of variables (for example, compensation, expenses, etc.)  
 
 Every table should include the following header variables to ensure they can be joined properly (these variables are designated by the table name "HEADER"):
@@ -253,6 +278,7 @@ Every table should include the following header variables to ensure they can be 
 * Form 
 * Tax year 
 * Submission version / timestamp 
+* Document Locator Number for the return  
 
 In the future consider adding the variables to tables for ease of subsetting:
 
@@ -261,13 +287,6 @@ In the future consider adding the variables to tables for ease of subsetting:
 * Geography (state, MSA, city, zip, county)  
 * Size (5 ranges)  
 
-
-
-### production_rule
-
-Xpaths contained in the Master Concordance File are used to extract data from XML files and convert it into a more structured format. Production rules represent anything that should be done to the raw data after it is extracted from XML files to standardize the data or make it more useful.
-
-For example, in some versions of forms a checked checkbox will be represented as an "X", and in others as a "Y" or "1". These all mean the same thing, so they should be re-coded with the same value. This is a suggested production rule.
 
 
 
@@ -284,16 +303,18 @@ For an overview of using xpaths in R, see the [Quick Guide to XML in R](Quick_Gu
 The IRS has revised the 990 and updated e-filing forms many times. This field contains the XSD version information necessary to match schemas to XML documents.
 
 
+### production_rule
+
+Xpaths contained in the Master Concordance File are used to extract data from XML files and convert it into a more structured format. Production rules represent anything that should be done to the raw data after it is extracted from XML files to standardize the data or make it more useful.
+
+For example, in some versions of forms a checked checkbox will be represented as an "X", and in others as a "Y" or "1". These all mean the same thing, so they should be re-coded with the same value. This is a suggested production rule.
 
 
-### required
-
-Is the specific field required for the particular filer in order to submit your 990 data to the IRS? 
-
-The e-filing system provides some validation to ensure necessary fields are complete. It may not be strictly enforced, though.
 
 
+### last_version_modified
 
+This field contains a record of when specific variables have been last updated.
 
 
 
@@ -310,7 +331,7 @@ margin: 0 0 20px 0;
 
 td {
     padding: 3px 10px 3px 10px;
-    text-align: center;
+    text-align: left;
 }
 
 table
