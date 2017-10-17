@@ -46,13 +46,13 @@ The MasterConcordanceFile.csv included in this repository consists of the follow
 
 A more in-depth description of each variable is covered below.
 
-The current status of each of these fields is:
 
+#### *Development Status*
 
 FIELD  |  STATUS  |  VALIDATED?
 :------|:---------|:------------
 variable_name | Complete | YES  
-description | Complete | Yes  
+description | Complete | YES  
 scope | Complete | NO  
 location_code | Complete | NO  
 form | Complete | YES  

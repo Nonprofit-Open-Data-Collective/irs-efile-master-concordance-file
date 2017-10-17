@@ -7,7 +7,7 @@ The IRS released the [990 E-FILER DATA](https://aws.amazon.com/public-datasets/i
 The MCF is meant to serve as a rosetta stone of sorts, allowing programmers to convert XML documents into a structured database by mapping 10,000 unique xpaths onto a consistent and well-documented 
 data dictionary.
 
-Follow the [MCF DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
+Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
 
 --- 
 
