@@ -33,6 +33,9 @@ Each two-character code indicates the FORM, SCOPE, and LOCATION of the variable.
 * 02 - Variable occurs in Part II of the form 
 * Etc. 
 
+
+*Header and signature block variables are consistent across all PC, EZ, and PF forms and have a scope codde "HD". Since the signature block is in a different location on each form, variables with an HD scope have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.*
+
 **SCOPE**  
 * HD - Header and signature block variables that are identical across PC, EZ, and PF forms  
 * PC - Variable relevant ONLY to full form 990 nonprofit filers  
@@ -47,7 +50,7 @@ Note that a "variable" is different than a field on a 990 form, and that data is
 
 In this example, revenue occurs as a Current Year Revenue on the 990-PC version, and just Revenue on the 990-EZ version. The Number of Volunteers variable only occurs on the 990-PC version, so all EZ filers will be missing this data in the database.
 
-Variable with SB scope occur either in the header or signature block on all of the forms. Since the signature block is in a different location on each form, When variables have SB scope they will always have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.
+
 
 
 

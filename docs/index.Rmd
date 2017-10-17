@@ -4,6 +4,17 @@ output: html_document
 ---
 
 
+```{r, echo=F, message=F, warning=F}
+
+library( knitr )
+library( dplyr )
+
+dat <- read.csv( "../efiler_master_concordance.csv" )
+
+
+```
+
+
 
 <img src="../assets/logo.png" width="200">
 
@@ -23,11 +34,9 @@ Many thanks to all of those that have helped generate this file, but especially 
 
 
 
+### Concordance Fields
 
-
-## DATA DICTIONARY 
-
-The MasterConcordanceFile.csv included in this repository consists of the following variables:
+The MasterConcordanceFile.csv included in this repository consists of the following fields:
 
 * **variable_name** - Name of research database variable
 * **description** - Definition of the variable, derived from 990 forms
@@ -47,14 +56,61 @@ The MasterConcordanceFile.csv included in this repository consists of the follow
 A more in-depth description of each variable is covered below.
 
 
-#### *Development Status*
+
+## CONCORDANCE OVERVIEW
+
+The Master Concordance File is organized around xpaths, which are the 'addresses' that designates the location of data in XML documents. Since the IRS has released the e-filer data in XML format, the xpaths are needed to extract data related to specific variables from a file.
+
+Each row of the Master Concordance File provides documentation for a unique xpath. 
+
+Each xpath provides the location for data from a specific field on the 990 form, for example the "total revenue" value a nonprofit enters. As the IRS has updated forms and schemas, xpaths related to a specific field have changed. If you want to collect data over time from the same field, you need to know all xpaths that represent that specific field. 
+
+In addition, the same field may or may not be present on multiple forms. Large nonprofits fill out the full 990-PC form, which contains approximately 5,000 variables. Small nonprofits fill out the 990-EZ form, which contains approximately 1,800 variables. Of these, about 1,700 occur on both forms. For this reason, we have created a SCOPE code to describe whether variable occur on one or both forms. 
+
+The scope code also differentiate variables related to nonprofits (PC, EZ and PZ codes) versus foundations (PF code). 
+
+So in short, the Master Concordance File provides documentation necessary to translate the IRS e-filer data into a structured database, partly by providing the map of xpaths onto fields, and mapping fields across forms onto common variables.
+
+<img src="../assets/variable_structure.png" width="600">
+
+In this example, revenue occurs as "Current Year Revenue" on the 990-PC version, and just "Revenue" on the 990-EZ version. The Number of Volunteers variable only occurs on the 990-PC version, so all EZ filers will be missing this data in the database.
+
+The current Master Concordance File contains approximately 10,000 xpaths organized across the three different types of filers as follows:
+
+```{r, echo=F}
+
+dd3 <- unique( dat[ c("variable_name","scope" ) ] )
+
+dd4 <- as.data.frame (table( dd3$scope ) )
+
+names( dd4 ) <- c("Scope", "Number of Variables")
+
+kable( dd4, align="l" )
+
+```
+
+To make sense of this table, note that all forms contain the same basic "Header" variables (scope=HD) which describe basic nonprofit and filing characteristics like name, address, EIN, tax year, etc. 
+
+Variables for 990-EZ filers include variables unique to the EZ form (scope=EZ), and variables common across the 990-EZ and 990-PC forms (scope=PZ). 
+
+So the 990-EZ filers will submit data on 48 + 108 + 1,711 = 1,867 unique fields. 
+
+
+
+
+
+
+
+### Development Status
+
+The initial release of the Master Concordance File is meant to provide an architecture for documenting the IRS e-filer data, but not all fields are complete. This table reports on the progress of development of fields in the Master Concordance File:
 
 FIELD  |  STATUS  |  VALIDATED?
 :------|:---------|:------------
 variable_name | Complete | YES  
 description | Complete | YES  
 scope | Complete | NO  
-location_code | Complete | NO  
+location_code | Complete; Missing Line Info | NO  
 form | Complete | YES  
 part | Complete | NO  
 data_type | In Progress | NO  
@@ -67,33 +123,41 @@ production_rule | No Data Yet | NO
 
 
 
+
+
+## DATA DICTIONARY
+
+
 ### variable_name
 
 Each variable name begins with a 6-letter prefix the follows the pattern: **XX_XX_XX_NAME**
 
-Since there are over 6,500 unique variables, the prefix helps organize the variables into groups. The prefix indicates the FORM, SCOPE, and LOCATION of the variable.
+Since there are over 6,500 unique variables, the prefix helps organize the variables into groups. The prefix indicates the FORM, LOCATION, and SCOPE of the variable.
 
-**FORM** (see below for more info):  
+**FORM** - Form from which the variable originates (main 990, or schedule) 
 * F9 - Variable occurs on Form 990, 990-EZ, or 990-PF  
 * SA, SB, ... SR - Variable occurs on Schedule A to Schedule R  
-* 3-character codes followed by a PF scope indicate auxillary scheduled for foundations  
+* AF - Auxillary forms for PF foundation filers  
 
 
-**LOCATION** - two digit code indicating the PART of the 990 form, or groups of variables.
-* 00 - Variable occurs outside of a section ("Part") on the 990 form, typically the header  
+**LOCATION** - two digit code indicating the PART of the 990 form, which indicates a thematic group of variables.
+* 00 - Variable occurs outside of a section ("Part") on the 990 form, typically the header or signature block  
 * 01 - Variable occurs in Part I of the form  
 * 02 - Variable occurs in Part II of the form 
 * Etc. 
 
-**SCOPE**  
-* HD - Header and signature block variables that are identical across PC, EZ, and PF forms  
+*Header and signature block variables are consistent across all PC, EZ, and PF forms and have a scope codde "HD". Since the signature block is in a different location on each form, variables with an HD scope have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.*
+
+
+
+**SCOPE** - Indicates which filers would submit data related to the variable (PC, EZ, PZ=PC&EZ, or PF)
 * PC - Variable relevant ONLY to full form 990 nonprofit filers  
 * EZ - Variable relevant ONLY to 990-EZ nonprofit filers  
 * PZ - Variable relevant to BOTH full 990 and 990-EZ nonprofit filers  
 * PF - Variable relevant only to foundations  
+* HD - Header and signature block variables that are identical across PC, EZ, and PF forms  
 
 
-*Variable with SB scope are an edge case associated with a small number of xpaths. These variables can occur either in the header or signature block. Since the signature block is in a different location on each form, When variables have SB scope they will always have a location of 00 for consistency across the forms, even though in two cases they are assigned their own part.*
 
 Each variable has been assigned a unique name. One variable might appear several times in the concordance file in circumstances where multiple xpaths map onto the same variable. This happens when xpaths have changed over different versions of the IRS e-filer schema, or when the same variable occurs on both the 990-PC and 990-EZ forms.
 
@@ -171,12 +235,6 @@ Some foundations are requird to submit auxillary schedules. These are indicated 
 A 2-character code representing the form or schedule from which the variable is derived.
 
 ```{r, warning=F, message=F, echo=F}
-
-library( knitr )
-
-dat <- read.csv( "../efiler_master_concordance.csv" )
-
-
 
 t1 <- table( dat$form )
 
