@@ -24,8 +24,7 @@ Each two-character code indicates the FORM, SCOPE, and LOCATION of the variable.
 **FORM** (see below for more info):  
 * F9 - Variable occurs on Form 990, 990-EZ, or 990-PF  
 * SA through SR - Variable occurs on Schedule A to Schedule R  
-* 3-character codes followed by a PF scope indicate auxillary scheduled for foundations
-* AF - Auxillary schedule for PF filers
+* AF - Auxillary schedule for PF filers  
 
 
 **LOCATION** - two digit code indicating the PART of the 990 form, or groups of variables.
@@ -57,7 +56,9 @@ Variable with SB scope occur either in the header or signature block on all of t
 
 
 
-## Variable Groups ("parts")
+## Variable Groups ("PARTS")
+
+The 990 Forms and Schedules are divided into PARTS, which organize the fields by themes. They are listed below.
 
 *These groups are based upon the [2016 IRS 990 Forms and Schedules](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/tree/master/990_forms).*
 
@@ -350,7 +351,7 @@ margin: 0 0 20px 0;
 
 td {
     padding: 3px 10px 3px 10px;
-    text-align: center;
+    text-align: left;
 }
 
 table
@@ -364,6 +365,9 @@ table
 h1, h2{
   margin-top:100px;
   margin-bottom:20px;
+  font-family: "Century Gothic";
+  font-size: 40px;
+  text-transform: uppercase;
 }
 
 

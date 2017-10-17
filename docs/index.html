@@ -133,20 +133,102 @@ $(document).ready(function () {
 <h2>DATA DICTIONARY</h2>
 <p>The MasterConcordanceFile.csv included in this repository consists of the following variables:</p>
 <ul>
-<li><strong>VARIABLE_NAME</strong> - Name of research database variable</li>
-<li><strong>DESCRIPTION</strong> - Definition of the variable, derived from 990 forms</li>
-<li><strong>SCOPE</strong> - Filers to which the variable pertains (small charities, large charities, all charities, foundations)</li>
-<li><strong>LOCATION_CODE</strong> - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules</li>
-<li><strong>FORM</strong> - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R</li>
-<li><strong>PART</strong> - Location of the field on the form</li>
-<li><strong>RDB_TABLE</strong> - Tables for organizing the data into a relational database</li>
-<li><strong>PRODUCTION_RULE</strong> - Rules which should be applied to the raw data after extraction to ensure it is meaningful</li>
-<li><strong>XPATH</strong> - XML address for the data</li>
-<li><strong>VERSION</strong> - The XSD schema version that the xpath belongs to</li>
-<li><strong>REQUIRED</strong> - Indicates whether nonprofit filers are required to complete this field</li>
-<li><strong>NOTES</strong> - Additional notes about variables from programmers and users</li>
+<li><strong>variable_name</strong> - Name of research database variable</li>
+<li><strong>description</strong> - Definition of the variable, derived from 990 forms</li>
+<li><strong>scope</strong> - Filers to which the variable pertains (small charities, large charities, all charities, foundations)</li>
+<li><strong>location_code</strong> - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules</li>
+<li><strong>form</strong> - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R</li>
+<li><strong>part</strong> - Location of the field on the form</li>
+<li><strong>data_type</strong> - Data field type (number, character, address, date, currency, etc.)<br />
+</li>
+<li><strong>required</strong> - Indicates whether nonprofit filers are required to complete this field<br />
+</li>
+<li><strong>cardinality</strong> - Is the variable-to-nonprofit relationship one-to-one or one-to-many</li>
+<li><strong>rdb_table</strong> - Tables for organizing the data into a relational database<br />
+</li>
+<li><strong>xpath</strong> - XML address for the data</li>
+<li><strong>version</strong> - The XSD schema version that the xpath belongs to</li>
+<li><strong>production_rule</strong> - Rules which should be applied to the raw data after extraction to ensure it is meaningful</li>
+<li><strong>last_version_modified</strong> - Most recent date the row of data was updated</li>
 </ul>
-<p>A more in-depth description of each is covered below.</p>
+<p>A more in-depth description of each variable is covered below.</p>
+<p>The current status of each of these fields is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FIELD</th>
+<th align="left">STATUS</th>
+<th align="left">VALIDATED?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">variable_name</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">Complete</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">scope</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">location_code</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">form</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">part</td>
+<td align="left">Complete</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">data_type</td>
+<td align="left">In Progress</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">required</td>
+<td align="left">In Progress</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">cardinality</td>
+<td align="left">No Data Yet</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="left">rdb_table</td>
+<td align="left">No Data Yet</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">xpath</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Complete</td>
+<td align="left">YES</td>
+</tr>
+<tr class="odd">
+<td align="left">production_rule</td>
+<td align="left">No Data Yet</td>
+<td align="left">NO</td>
+</tr>
+</tbody>
+</table>
 <div id="variable_name" class="section level3">
 <h3>variable_name</h3>
 <p>Each variable name begins with a 6-letter prefix the follows the pattern: <strong>XX_XX_XX_NAME</strong></p>
@@ -631,7 +713,7 @@ margin: 0 0 20px 0;
 
 td {
     padding: 3px 10px 3px 10px;
-    text-align: center;
+    text-align: left;
 }
 
 table
