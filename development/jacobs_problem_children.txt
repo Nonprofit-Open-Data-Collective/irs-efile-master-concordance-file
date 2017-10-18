@@ -275,3 +275,46 @@ SD_05_PC_CYYMMIENFUCO   CYMinus1 Yr Endwmt Fund Grp - Contributions PC  SCHED-D-
 SD_05_PC_CYYMMIENFUCO   CYMinus2 Yr Endwmt Fund Grp - Contributions PC  SCHED-D-PART-05-LINE-1b
 SD_05_PC_CYYMMIENFUCO   CYMinus3 Yr Endwmt Fund Grp - Contributions PC  SCHED-D-PART-05-LINE-1b
 SD_05_PC_CYYMMIENFUCO   CYMinus4 Yr Endwmt Fund Grp - Contributions PC  SCHED-D-PART-05-LINE-1b
+
+
+
+SD_05_PC_CYMEFAEXPENS   Administrative expenses PC  SCHED-D-PART-05-LINE-1f /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/AdministrativeExpensesAmt
+SD_05_PC_CYMEFAEXPENS   Administrative expenses PC  SCHED-D-PART-05-LINE-1f /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/AdministrativeExpensesAmt
+SD_05_PC_CYMEFAEXPENS   Administrative expenses PC  SCHED-D-PART-05-LINE-1f /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/AdministrativeExpensesAmt
+SD_05_PC_CYMEFAEXPENS   Administrative expenses PC  SCHED-D-PART-05-LINE-1f /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/AdministrativeExpensesAmt
+SD_05_PC_CYMEFBYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/BeginningYearBalanceAmt
+SD_05_PC_CYMEFBYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/BeginningYearBalanceAmt
+SD_05_PC_CYMEFBYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/BeginningYearBalanceAmt
+SD_05_PC_CYMEFBYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/BeginningYearBalanceAmt
+SD_05_PC_CYMEFEYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/EndYearBalanceAmt
+SD_05_PC_CYMEFEYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/EndYearBalanceAmt
+SD_05_PC_CYMEFEYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/EndYearBalanceAmt
+SD_05_PC_CYMEFEYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/EndYearBalanceAmt
+SD_05_PC_CYMEFGOSCHOL   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/GrantsOrScholarshipsAmt
+SD_05_PC_CYMEFGOSCHOL   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/GrantsOrScholarshipsAmt
+SD_05_PC_CYMEFGOSCHOL   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/GrantsOrScholarshipsAmt
+SD_05_PC_CYMEFGOSCHOL   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/GrantsOrScholarshipsAmt
+SD_05_PC_CYMEFIEOLOSS   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/InvestmentEarningsOrLossesAmt
+SD_05_PC_CYMEFIEOLOSS   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/InvestmentEarningsOrLossesAmt
+SD_05_PC_CYMEFIEOLOSS   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/InvestmentEarningsOrLossesAmt
+SD_05_PC_CYMEFIEOLOSS   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/InvestmentEarningsOrLossesAmt
+SD_05_PC_CYMEFOEXPEND   Other expenditures  PC  SCHED-D-PART-05-LINE-1e /Return/ReturnData/IRS990ScheduleD/CYMinus1YrEndwmtFundGrp/OtherExpendituresAmt
+SD_05_PC_CYMEFOEXPEND   Other expenditures  PC  SCHED-D-PART-05-LINE-1e /Return/ReturnData/IRS990ScheduleD/CYMinus2YrEndwmtFundGrp/OtherExpendituresAmt
+SD_05_PC_CYMEFOEXPEND   Other expenditures  PC  SCHED-D-PART-05-LINE-1e /Return/ReturnData/IRS990ScheduleD/CYMinus3YrEndwmtFundGrp/OtherExpendituresAmt
+SD_05_PC_CYMEFOEXPEND   Other expenditures  PC  SCHED-D-PART-05-LINE-1e /Return/ReturnData/IRS990ScheduleD/CYMinus4YrEndwmtFundGrp/OtherExpendituresAmt
+SD_05_PC_CYMYBOYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus1Year/BeginningOfYearBalance
+SD_05_PC_CYMYBOYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus2Years/BeginningOfYearBalance
+SD_05_PC_CYMYBOYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus3Years/BeginningOfYearBalance
+SD_05_PC_CYMYBOYBALAN   Beginning of year balance   PC  SCHED-D-PART-05-LINE-1a /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus4Years/BeginningOfYearBalance
+SD_05_PC_CYMYEOYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus1Year/EndOfYearBalance
+SD_05_PC_CYMYEOYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus2Years/EndOfYearBalance
+SD_05_PC_CYMYEOYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus3Years/EndOfYearBalance
+SD_05_PC_CYMYEOYBALAN   End of year balance PC  SCHED-D-PART-05-LINE-1g /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus4Years/EndOfYearBalance
+SD_05_PC_CYMYGOSCHOLA   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus1Year/GrantsOrScholarships
+SD_05_PC_CYMYGOSCHOLA   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus2Years/GrantsOrScholarships
+SD_05_PC_CYMYGOSCHOLA   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus3Years/GrantsOrScholarships
+SD_05_PC_CYMYGOSCHOLA   Grants or scholarships  PC  SCHED-D-PART-05-LINE-1d /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus4Years/GrantsOrScholarships
+SD_05_PC_CYMYIEOLOSSE   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus1Year/InvestmentEarningsOrLosses
+SD_05_PC_CYMYIEOLOSSE   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus2Years/InvestmentEarningsOrLosses
+SD_05_PC_CYMYIEOLOSSE   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus3Years/InvestmentEarningsOrLosses
+SD_05_PC_CYMYIEOLOSSE   Investment earnings or losses   PC  SCHED-D-PART-05-LINE-1c /Return/ReturnData/IRS990ScheduleD/CurrentYearMinus4Years/InvestmentEarningsOrLosses
