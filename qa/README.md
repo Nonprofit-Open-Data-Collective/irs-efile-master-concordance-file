@@ -19,6 +19,7 @@ In python this is like writing to the file as:
     'data_type', 'required', 'cardinality', 'rdb_table', 'xpath', 'version',
     'production_rule', 'last_version_modified'
 	]
+	outfile = open("modified_concordance.csv", 'wb')
 	writer = csv.DictWriter(
         outfile,
         fieldnames=FIELDNAMES,
