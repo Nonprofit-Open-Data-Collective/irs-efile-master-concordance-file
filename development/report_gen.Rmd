@@ -1,0 +1,279 @@
+---
+title: "Single Variable Report"
+output: html_document
+---
+
+
+
+```{r}
+
+# ENTER YOUR ARGUMENTS HERE
+
+var.name <- "NETASSETSENDYEAR"
+var.type <- "numeric"
+sample.size <- 25
+
+
+```
+
+```{r, eval=F, echo=F}
+
+# instead of this:
+
+gen_report( var="NETASSETSENDYEAR"", type="numeric", sample.size=25 )
+
+
+
+```
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=F, warning=F, results='asis')
+```
+
+
+```{r}
+library( dplyr )
+library( knitr )
+library( xtable )
+```
+
+
+```{r, cache=TRUE}
+
+val <- read.csv( "sample_validation_data.csv" )
+
+setwd( "C:/Users/jdlecy/Dropbox/00 - Nonprofit Open Data/05 - BUILD/August2017/2014" )
+
+dat <- readRDS( "990EFILE-2014.rds" )
+
+```
+
+
+
+
+```{r}
+
+cat( paste( "<h2>Variable:", var.name, "</h2>") )
+
+cat( "list all xpaths -- variable descriptions -- location codes -- etc")
+
+```
+
+
+
+
+
+```{r, echo=FALSE}
+
+
+var.numeric <- getElement( dat, var.name )
+
+
+
+```
+
+
+## Check For Non-Numeric Elements
+
+
+
+```{r, results='asis'}
+
+these.numeric <- grepl( "^[0-9,.-]*$", var.numeric )
+
+cat( paste( "<h4>There are ", format( sum(these.numeric), big.mark=","), "non-numeric cases in the vector.</h4>" ) )
+
+# sum( ! grepl( "^[0-9,.-]*$", var.numeric ) ) / length( var.numeric ) # proportion numeric
+
+# head( var.numeric[ ! these.numeric ], 25 ) # example non-numeric cases
+
+
+
+```
+
+
+
+```{r, results='asis', echo=F}
+
+
+var.numeric <- as.numeric( var.numeric )
+
+
+if( var.type=="numeric" )
+{
+  
+  cat( "<h3>Largest Cases</h3> " )
+  
+  head( sort( var.numeric, decreasing=T ), sample.size ) %>% kable
+  
+  
+
+  
+}
+
+
+```
+
+
+```{r}
+
+
+if( var.type=="numeric" )
+{
+  
+  
+  cat( "<h3>Random Sample of Cases</h3> " )
+  
+  var.numeric[ sample( length(var.numeric), sample.size ) ] %>% kable
+  
+  
+}
+
+
+
+
+```
+
+
+
+
+```{r, results='asis', echo=F}
+
+
+if( var.type=="numeric" )
+{
+  
+  
+  cat( "<h3>Smallest Cases</h3>" )
+  
+  head( sort( var.numeric, decreasing=F ), sample.size ) %>% kable 
+  
+}
+
+
+```
+
+
+
+
+### Summary Statistics
+
+```{r}
+
+
+t1 <- summary( var.numeric  ) 
+
+df <- data.frame(  STAT=names(t1), VALUE=as.numeric(t1) )
+
+print( xtable( df ), type="html" )
+
+# df %>% kable
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{css}
+p {
+color: black;
+margin: 0 0 20px 0;
+}
+
+td {
+    padding: 3px 10px 3px 10px;
+    text-align: left;
+}
+
+table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:100px;
+}
+
+h1{
+  margin-top:100px;
+  margin-bottom:20px;
+  font-family: "Century Gothic";
+  font-size: 50px;
+  text-transform: uppercase;
+}
+
+h2{
+  margin-top:100px;
+  margin-bottom:20px;
+  font-family: "Century Gothic";
+  font-size: 40px;
+}
+
+h3{
+  margin-top:50px;
+  margin-bottom:20px;
+  background: lightgray;
+}
+
+H5{
+    text-align: center;
+    color: gray;
+    font-size:0.8em;
+}
+
+img {
+    max-width: 90%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:30px;
+    margin-bottom:20px;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+pre code {
+   display: block; 
+   padding: 0.5em;
+   margin-bottom:20px;
+}
+
+code {
+  font-size: 92%;
+  border: 10px solid #F8F8F8;
+  margin-bottom: 2px;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+```
+
