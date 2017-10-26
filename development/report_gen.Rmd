@@ -250,7 +250,7 @@ plot( log(var.numeric),
 ### Data Across Versions
 
 
-```{r}
+```{r, fig.height=30}
 
 var.no.outliers <- var.numeric
 var.no.outliers[ var.numeric < percentile.01 ] <- NA
@@ -262,19 +262,29 @@ y.min <- min( var.no.outliers, na.rm=T )
 
 n.row <- ceiling( nlevels(vs) / 3 ) 
 
-par( mar=c(0,0,1,0), mfrow=c(2,3) )
+par( mar=c(4,5,0,0), bty="n" )
+
+boxplot( var.no.outliers~vs,
+         main="", 
+         xlab="Log of Values", 
+         ylab="",
+         horizontal = TRUE, las=1, 
+         frane.plot=FALSE, 
+         outline=FALSE )
 
 
-for( i in levels(vs) )
-{
-  
-  plot( var.no.outliers[ vs == i ], ylim=c(y.min,y.max),
-        bty="n", xlab="index", ylab="values",
-        cex=0.8, pch=19, col=gray(0.5,0.3), xaxt="n", yaxt="n" )
-  
-  title( main=i, line=-1, cex.main=2 )
-  
-}
+# par( mar=c(0,0,1,0), mfrow=c(2,3) )
+#
+# for( i in levels(vs) )
+# {
+#   
+#   plot( var.no.outliers[ vs == i ], ylim=c(y.min,y.max),
+#         bty="n", xlab="index", ylab="values",
+#         cex=0.8, pch=19, col=gray(0.5,0.3), xaxt="n", yaxt="n" )
+#   
+#   title( main=i, line=-1, cex.main=2 )
+#   
+# }
 
 
 
