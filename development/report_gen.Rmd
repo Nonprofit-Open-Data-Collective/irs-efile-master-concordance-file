@@ -30,7 +30,7 @@ gen_report( var="NETASSETSENDYEAR"", type="numeric", sample.size=25 )
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=F, warning=F, results='asis')
+knitr::opts_chunk$set( echo=FALSE, message=F, warning=F, results='asis', fig.width=10 )
 ```
 
 
@@ -38,6 +38,11 @@ knitr::opts_chunk$set(echo=FALSE, message=F, warning=F, results='asis')
 library( dplyr )
 library( knitr )
 library( xtable )
+library( pander )
+library( ggplot2 )
+
+options( scipen=8 )
+
 ```
 
 
@@ -49,6 +54,31 @@ setwd( "C:/Users/jdlecy/Dropbox/00 - Nonprofit Open Data/05 - BUILD/August2017/2
 
 dat <- readRDS( "990EFILE-2014.rds" )
 
+versions <- c("2005v3.0", "2005v3.1", "2005v3.2", "2005v3.3", "2005v4.0", 
+"2005v4.1", "2006v3.0", "2006v3.1", "2006v3.2", "2006v3.3", "2006v4.0", 
+"2006v4.1", "2006v4.2", "2006v4.3", "2006v4.4", "2007v1.0", "2007v1.1", 
+"2007v2.0", "2007v2.1", "2007v2.10", "2007v2.11", "2007v2.12", 
+"2007v2.13", "2007v2.14", "2007v2.2", "2007v2.3", "2007v2.4", 
+"2007v2.5", "2007v2.6", "2007v2.7", "2007v2.8", "2007v2.9", "2008v1.0", 
+"2008v2.0", "2008v2.1", "2008v2.10", "2008v2.11", "2008v2.12", 
+"2008v2.13", "2008v2.14", "2008v2.2", "2008v2.3", "2008v2.4", 
+"2008v2.5", "2008v2.6", "2008v2.7", "2008v2.8", "2008v2.9", "2009v1.0", 
+"2009v1.1", "2009v1.10", "2009v1.2", "2009v1.3", "2009v1.4", 
+"2009v1.5", "2009v1.6", "2009v1.7", "2009v1.8", "2009v1.9", "2010v1.0", 
+"2010v2.0", "2010v3.0", "2010v3.1", "2010v3.2", "2010v3.3", "2010v3.4", 
+"2010v3.5", "2010v3.6", "2010v3.7", "2011v1.0", "2011v1.1", "2011v1.2", 
+"2011v1.3", "2011v1.4", "2011v1.5", "2012v2.0", "2012v2.1", "2012v2.2", 
+"2012v2.3", "2012v3.0", "2013v1.0", "2013v2.0", "2013v3.0", "2013v3.1", 
+"2013v4.0", "2014v1.0", "2014v2.0", "2014v3.0", "2014v4.0", "2014v4.1", 
+"2014v5.0", "2014v6.0", "2015v2.0", "2015v2.1", "2015v3.0")
+
+
+var.numeric <- as.numeric( getElement( dat, var.name) )
+
+vs <- factor( sample( versions, nrow(dat), replace=T ) )
+
+forms <- factor( sample( c("990-PC","990-EZ"), nrow(dat), replace=T ) )
+
 ```
 
 
@@ -58,22 +88,33 @@ dat <- readRDS( "990EFILE-2014.rds" )
 
 cat( paste( "<h2>Variable:", var.name, "</h2>") )
 
-cat( "list all xpaths -- variable descriptions -- location codes -- etc")
+cat( "DEFINITION: <b>Defition of the variable here...</b> <br>")
 
+cat( "SCOPE: <b>PZ</b> <br><br>")
+
+cat( paste( "<h4>Associated Xpaths:</h4>") )
+
+cat( "xpath1 -- data type -- location code  <br>xpath2 -- data type -- location code  <br>xpath3 -- data type -- location code  <br><br>")
+
+cat( paste( "<h3>Form Frequency:</h3>") )
+
+t1 <- table( forms )
+df <- data.frame( VERSION=names(t1), FREQ=as.numeric(t1)) 
+row.names(df) <- NULL
+df %>% pander
+
+cat( paste( "<h3>Version Frequency:</h3>") )
+
+t1 <- table( vs )
+df <- data.frame( VERSION=names(t1), FREQ=as.numeric(t1)) 
+row.names(df) <- NULL
+df %>% pander
 ```
 
 
 
 
 
-```{r, echo=FALSE}
-
-
-var.numeric <- getElement( dat, var.name )
-
-
-
-```
 
 
 ## Check For Non-Numeric Elements
@@ -96,6 +137,8 @@ cat( paste( "<h4>There are ", format( sum(these.numeric), big.mark=","), "non-nu
 
 
 
+
+
 ```{r, results='asis', echo=F}
 
 
@@ -104,6 +147,8 @@ var.numeric <- as.numeric( var.numeric )
 
 if( var.type=="numeric" )
 {
+  
+  cat( "<h2>Inspect Elements</h2> " )
   
   cat( "<h3>Largest Cases</h3> " )
   
@@ -159,7 +204,7 @@ if( var.type=="numeric" )
 
 
 
-### Summary Statistics
+## Summary Statistics
 
 ```{r}
 
@@ -170,15 +215,124 @@ df <- data.frame(  STAT=names(t1), VALUE=as.numeric(t1) )
 
 print( xtable( df ), type="html" )
 
-# df %>% kable
+df %>% pander
 
 ```
 
 
 
 
+## Visual Inspection
+
+```{r, echo=FALSE}
 
 
+percentile.99 <- quantile( as.numeric(var.numeric), probs=0.99, na.rm=TRUE )
+percentile.01 <- quantile( as.numeric(var.numeric), probs=0.01, na.rm=TRUE )
+
+
+plot( var.numeric, bty="n", xlab="index", ylab="values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+plot( var.numeric[ var.numeric > percentile.01 & var.numeric < percentile.99 ], 
+      bty="n", xlab="index", ylab="1st to 99th percentile of values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+plot( log(var.numeric), 
+      bty="n", xlab="index", ylab="log of values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+
+```
+
+
+
+### Data Across Versions
+
+
+```{r}
+
+var.no.outliers <- var.numeric
+var.no.outliers[ var.numeric < percentile.01 ] <- NA
+var.no.outliers[ var.numeric > percentile.99 ] <- NA
+
+
+y.max <- max( var.no.outliers, na.rm=T )
+y.min <- min( var.no.outliers, na.rm=T )
+
+n.row <- ceiling( nlevels(vs) / 3 ) 
+
+par( mar=c(0,0,1,0), mfrow=c(2,3) )
+
+
+for( i in levels(vs) )
+{
+  
+  plot( var.no.outliers[ vs == i ], ylim=c(y.min,y.max),
+        bty="n", xlab="index", ylab="values",
+        cex=0.8, pch=19, col=gray(0.5,0.3), xaxt="n", yaxt="n" )
+  
+  title( main=i, line=-1, cex.main=2 )
+  
+}
+
+
+
+
+```
+
+
+```{r, eval=F}
+
+indx <- 1:length(var.numeric)
+vs <- factor(vs)
+df <- data.frame( VINDEX=indx, VAR=var.numeric, VZ=vs, FORM=forms )
+
+qplot( var.numeric, bty="n", xlab="index", ylab="values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+plot( var.numeric[ var.numeric > percentile.01 & var.numeric < percentile.99 ], 
+      bty="n", xlab="index", ylab="1st to 99th percentile of values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+plot( log(var.numeric), 
+      bty="n", xlab="index", ylab="log of values", 
+      cex=0.5, pch=19, col=gray(0.5,0.5), xaxt="n" )
+
+
+
+qplot( x=VINDEX, y=VAR, data=df, facets( "FORM" )   )
+
+
+
+sp <- ggplot( df, aes( x=VINDEX, y=VAR)) + geom_point( shape=".", col="gray", alpha=1 ) 
+sp
+sp + facet_wrap( ~ FORM, ncol=5 )
+
+
+```
+
+
+### Data Across Versions
+
+```{r, eval=F}
+
+qplot(x, y = NULL, ..., data, facets = NULL, margins = FALSE,
+  geom = "auto", xlim = c(NA, NA), ylim = c(NA, NA), log = "",
+  main = NULL, xlab = deparse(substitute(x)),
+  ylab = deparse(substitute(y)), asp = NA, stat = NULL, position = NULL)
+
+```
+
+
+
+
+## TO-DO
+
+* Report the form type and version of the top 100 and bottom 100 outlier cases
+* pivot by form type and version for all graphs and summaries
+* summarize zeros
+* summarize missing values
 
 
 
