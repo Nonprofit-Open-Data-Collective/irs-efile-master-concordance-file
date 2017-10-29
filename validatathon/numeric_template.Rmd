@@ -1,0 +1,99 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=FALSE, message=F, warning=F, results='asis', fig.width=10 )
+```
+
+# Overview
+
+**Variable:** `r variable `
+
+**Definition:** `r record$description`
+
+**Scope:** `r record$scope `
+
+**Location code:** `r record$location_code`
+
+**Purported data type:** `r record$data_type`
+
+```{r}
+xpaths <- cc %>%
+  filter(variable_name == variable) %>%
+  select(xpath)
+knitr::kable(xpaths)
+```
+
+
+# Incidence
+
+```{r}
+v_count_local <- raw %>%
+  group_by(version) %>%
+  summarise(var_count = n()) %>%
+  ungroup()
+
+v_prop <- left_join(v_count_global, v_count_local, by = "version") %>%
+  mutate(var_count = ifelse(is.na(var_count), 0, var_count)) %>%
+  mutate(var_prop = var_count / n_version) %>%
+  arrange(version)
+
+ggplot(v_prop %>% filter(var_prop > 0), aes(x = reorder(version, var_prop), y = var_prop)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip() +
+  theme_bw() +
+  labs(title = "Form versions with greatest incidence", x="Form version", y="Incidence")
+
+ggplot(v_prop, aes(x = version, y = var_prop)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::percent) +
+  geom_vline(xintercept=which(v_prop$version == "2013v3.0"), color = "red", linetype = "dashed") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Incidence by form version", x="Form version", y="Incidence")
+```
+
+## Largest values
+```{r}
+raw %>%
+  select(version, org_name, value) %>%
+  arrange(desc(value)) %>%
+  top_n(10, value) %>%
+  knitr::kable()
+```
+
+## Overall distribution (linear)
+```{r}
+ggplot(raw, aes(x=value)) +
+  geom_histogram(bins = 100) +
+  theme_bw() +
+  labs(title = paste("Value distribution: ", variable), subtitle = "Linear scale")
+```
+
+## Distribution by version (linear)
+```{r}
+ggplot(raw, aes(x=version, y = value)) +
+  geom_boxplot(bins = 100) +
+  theme_bw() +
+  labs(title = paste("Value distribution by version: ", variable), subtitle = "Linear scale")
+```
+
+## Overall distribution (log)
+```{r}
+ggplot(raw, aes(x=value)) +
+  geom_histogram(bins = 100) +
+  theme_bw() +
+  scale_x_log10() +
+  labs(title = paste("Value distribution: ", variable), subtitle = "Semilog scale")
+```
+
+## Distribution by version (log)
+```{r}
+ggplot(raw, aes(x=version, y = value)) +
+  geom_boxplot(bins = 100) +
+  theme_bw() +
+  scale_y_log10() +
+  labs(title = paste("Value distribution by version: ", variable), subtitle = "Semilog scale")
+```

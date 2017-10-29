@@ -1,0 +1,69 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=FALSE, message=F, warning=F, results='asis', fig.width=10 )
+```
+
+# Overview
+
+**Variable:** `r variable `
+
+**Definition:** `r record$description`
+
+**Scope:** `r record$scope `
+
+**Location code:** `r record$location_code`
+
+**Purported data type:** `r record$data_type`
+
+```{r}
+xpaths <- cc %>%
+  filter(variable_name == variable) %>%
+  select(xpath)
+knitr::kable(xpaths)
+```
+
+
+# Incidence
+
+```{r}
+v_count_local <- raw %>%
+  group_by(version) %>%
+  summarise(var_count = n()) %>%
+  ungroup()
+
+v_prop <- left_join(v_count_global, v_count_local, by = "version") %>%
+  mutate(var_count = ifelse(is.na(var_count), 0, var_count)) %>%
+  mutate(var_prop = var_count / n_version) %>%
+  arrange(version)
+
+ggplot(v_prop %>% filter(var_prop > 0), aes(x = reorder(version, var_prop), y = var_prop)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip() +
+  theme_bw() +
+  labs(title = "Form versions with greatest incidence", x="Form version", y="Incidence")
+
+ggplot(v_prop, aes(x = version, y = var_prop)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::percent) +
+  geom_vline(xintercept=which(v_prop$version == "2013v3.0"), color = "red", linetype = "dashed") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Incidence by form version", x="Form version", y="Incidence")
+```
+
+# Sample values
+
+```{r}
+raw %>%
+  select(org_name, version, value) %>%
+  group_by(version) %>%
+  sample_n(5, replace = TRUE) %>%
+  ungroup() %>%
+  distinct() %>%
+  arrange(version, value) %>%
+  knitr::kable()
+```
