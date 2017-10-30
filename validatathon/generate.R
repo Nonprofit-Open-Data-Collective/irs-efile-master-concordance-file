@@ -79,4 +79,6 @@ getCsvPath <- function(variable) {
 final_report <- fields %>%
   mutate(processed = variable_name %in% done) %>%
   mutate(report_path = ifelse(processed, getReportPath(variable_name), NA)) %>%
-  mutate(csv_path = ifelse(processed, getCsvPath(variable_name), NA))
+  mutate(csv_path = ifelse(processed, getCsvPath(variable_name), NA)) %>%
+  select(-xpath)
+write_csv(final_report, "./output/final_report.csv")
