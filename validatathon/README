@@ -1,0 +1,19 @@
+To generate Validatathon assets:
+
+(1) Create a master data set by using:
+   https://github.com/CharityNavigator/990_long
+   
+(2) Partition the master data set into .csv files using 990_long/split_csv.py.
+
+(3) version_count.csv, in this directory, was generated ad-hoc at an interactive
+    terminal. It represents a count of all 990 in the data set by version.
+    
+(4) Use generate.R to create detail reports. You will need to tweak the number
+    of partitions, the input source, and the output destination to get it to run
+    on your particular machine. This also generates the "report of reports" for
+    these detail reports.
+  
+(5) Use examples.R to identify examples for each xpath.
+
+(7) Manually combine the xpath report and the report of reports into a 
+    spreadsheet; format as desired.
