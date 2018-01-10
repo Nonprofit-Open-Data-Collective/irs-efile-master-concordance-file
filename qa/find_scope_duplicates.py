@@ -1,7 +1,11 @@
 """
 This looks for instances where the same variable_name appears in the same scope in the same version.
+Scope here means the way that dictionary keys are generated: [variable_name] + [scope] + [location]
+where those values come directly from the master_concordance_file, except location, which is the second element of location_code split on '-'
 If two expaths to the same variable occur are (erroneosly) listed in the same version, this will appear to be a problem, but it's likely not a "real" problem because only one variant appears in a version.
-This was written to find "minus year" issues, where for some reason the prior N year values were given the same variable_name as current_values (or in some cases, two years ago has the same name as three years ago, as of 10/28/2017).
+
+This situation legitimately occurs in some circumstances, including:
+ - There's an amount in a few named categories, and then the same amount in an 'other' category. Those these have different expaths and occur in the same spot, they should both get mapped to the same variable.
 """
 
 import csv
