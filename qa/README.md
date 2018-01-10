@@ -1,4 +1,25 @@
-## Quality Assurance - Master Concordance File
+## Quality Assurance 
+
+The scripts in this directory represent attempts to programatically detect problems with the concordance file with "checksum"-like operations. 
+
+### Scripts 
+in this dir, i.e. in qa/:
+
+find\_scope\_duplicates.py
+
+Usage: from one directory up run:
+
+	$ python -m qa.find_scope_duplicates
+	
+It will automatically output variables it sees as potential problems in qa/prob_vars.csv. Note that it is configured to ignore
+[NOT\_ERRORS](https://github.com/jsfenfen/irs-efile-master-concordance-file/blob/master/qa/find_scope_duplicates.py#L13) and [IGNORABLE\_FOR\_NOW](https://github.com/jsfenfen/irs-efile-master-concordance-file/blob/master/qa/find_scope_duplicates.py#L14) --I've been manually adding things to this list when I find stuff that's not really a problem or ignorable for now (because it's not on a lettered schedule). 
+
+### Common fixes for common problems
+
+An often-seen problem is that the same variable name will get used for two seemingly similar variables: one an __indicator__ variable, of boolean or checkbox type that an organization needs to check if appropriate, and then a related amount, that they fill in (presumably if checked). In these circumstances, I've generally been adding an 'I' to the boolean / checkbox / indicator variable.
+
+
+### Master Concordance File
 
 Different spreadsheet programs output .csv files in slightly different flavors. Excel on Mac, for intance, uses \r\n to end lines instead of just \n. In order to make sure that the file diffs are readable, we're trying to standardize the output of these files before committing. 
 
