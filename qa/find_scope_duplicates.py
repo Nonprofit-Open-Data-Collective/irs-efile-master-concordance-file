@@ -76,7 +76,7 @@ if __name__ == '__main__':
         except KeyError:
             name_hash[key] = [row]
     error_count = 0
-    for i, key in enumerate(name_hash.keys()):
+    for key in sorted(name_hash):
         num_xpaths = len(name_hash[key])
         #print key, num_xpaths
 
