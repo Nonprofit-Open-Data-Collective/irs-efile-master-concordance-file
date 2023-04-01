@@ -11,24 +11,24 @@ F9_01_REV_CONTR_GRANTS_PY
 When naming variables we lead with the noun and follow with the adjective or qualifier. This helps to naturally group variables. Prefixes are omitted in these examples for simplicity:
 
 Bad: 
-•	grants
-•	net_fundraisers
-•	rent
+* grants
+* net_fundraisers
+* rent
 
 Good:
-•	rev_grants
-•	rev_fundraisers_net
-•	rev_rent versus exp_rent
+* rev_grants
+* rev_fundraisers_net
+* rev_rent versus exp_rent
 
 OK: 
-•	street
-•	city
-•	zip
+* street
+* city
+* zip
 
 Better:
-•	addr_street
-•	addr_city
-•	addr_zip
+* addr_street
+* addr_city
+* addr_zip
 
 
 
