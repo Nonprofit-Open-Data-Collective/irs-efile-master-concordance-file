@@ -8,6 +8,10 @@ The MCF is meant to serve as a rosetta stone of sorts, allowing programmers to c
 
 We designed consistent standards for [variable naming conventions](VARNAMES.md) and [documentation](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/Instructions%20for%20Updating%20Concordance%20v3.2.pdf) to improve ease of use. 
 
+The concordance organizes data into approximately 125 distinct tables that correspond with sections on the forms (approximately 80 one-to-one tables and 46 one-to-many tables).  
+
+[DATA DICTIONARY](https://nonprofit-open-data-collective.github.io/irs990efile/data-dictionary/data-dictionary.html)
+
 Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
 
 --- 
