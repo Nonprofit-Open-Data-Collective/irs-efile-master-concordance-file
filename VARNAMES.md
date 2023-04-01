@@ -1,4 +1,38 @@
-## Variable Name Abbreviations
+## Variable Naming Conventions
+
+For clarity and ease of use variable names all follow consistent conventions: 
+
+F9_01_REV_CONTR_GRANTS_PY 
+
+* First two characters: Form (F9) or Schedule (SA, SB, etc.)
+* Second two characters: Part of the form or schedule (01, 02, etc.) 
+* Remaining string: variable names 
+
+When naming variables we lead with the noun and follow with the adjective or qualifier. This helps to naturally group variables. Prefixes are omitted in these examples for simplicity:
+
+Bad: 
+•	grants
+•	net_fundraisers
+•	rent
+
+Good:
+•	rev_grants
+•	rev_fundraisers_net
+•	rev_rent versus exp_rent
+
+OK: 
+•	street
+•	city
+•	zip
+
+Better:
+•	addr_street
+•	addr_city
+•	addr_zip
+
+
+
+## Abbreviations
 
 Lots of statistical software packages limit variable name length to 32 characters. 
 
