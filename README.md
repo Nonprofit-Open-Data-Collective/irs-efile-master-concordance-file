@@ -20,20 +20,48 @@ Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-c
 
 The [efiler_master_concordance.csv](efiler_master_concordance.csv) included in this repository consists of the following variables:
 
-* **variable_name** - Name of research database variable
-* **description** - Definition of the variable, derived from 990 forms
-* **scope** - Filers to which the variable pertains (small charities, large charities, all charities, foundations)
-* **location_code** - The location of a field (form, part, and line) on the 2016 paper version of forms and schedules
-* **form** - Form on which the field occurs - 990, 990EZ, 990PF, Schedule A - Schedule R
-* **part** - Location of the field on the form
-* **data_type** - Data field type (number, character, address, date, currency, etc.)  
-* **required** - Indicates whether nonprofit filers are required to complete this field  
-* **cardinality** - Is the variable-to-nonprofit relationship one-to-one or one-to-many
-* **rdb_table** - Tables for organizing the data into a relational database  
-* **xpath** - XML address for the data
-* **version** - The XSD schema version that the xpath belongs to
-* **production_rule** - Rules which should be applied to the raw data after extraction to ensure it is meaningful
-* **last_version_modified** - Most recent date the row of data was updated
+**VARIABLE DEFINITIONS**
+
+* **variable_name** - Name of research database variable 
+* **xpath** - XML address for the data 
+* **description** - Definition of the variable, derived from 990 forms  
+* **variable_scope** - Which forms contain the variable (full 990 only or 990+990EZ) 
+* **data_type_xsd** - Data field type specified on XSD schema (number, character, address, date, currency, etc.) 
+* **data_type_simple** - Data type in R (more limited set of types)
+
+**LOCATION OF THE FIELD ON THE 990 FORM** 
+
+* **form** - Form 990 or schedule where the field is located
+* **form_type** - Origin of the field - form 990 or 990EZ
+* **form_part** - Section of the form or schedule (Part I, II, etc.) 
+* **form_line_number** - Line number corresponding with the field 
+* **location_code** - stylized and hierarchical 'address' of the field on the form created by concatenating the form, form_type, form_part, and form_line_number: F990-PC-PART-01-LINE-02
+* **location_code_xsd** - The location information specified by the XSD schema file
+* **location_code_family** - If a 990PC and 990EZ version exist, the family is corresponding the PC version so that family codes can be used to select all xpath versions together 
+
+Note that location codes were designed so sorting by location codes in the spreadsheet will place variables in the same order as they appear on the full version of the 990-PC or schedules. 
+
+Fields often appear in tables with letters indexing columns and line numbers indexing rows. In these cases location codes will sort from left to right, then top to bottom. 
+
+```
+F990-PC-PART-07-SECTION-B-LINE-01-COL-A
+F990-PC-PART-07-SECTION-B-LINE-01-COL-C
+F990-PC-PART-07-SECTION-B-LINE-01-COL-B
+```
+
+**TABLE INFO**
+
+* **rdb_table** - Table names 
+* **rdb_relationship** - Cardinality of the table (1-to-1 or 1-to-many)  
+
+
+
+**XML SCHEMA INFO** (from XSD files)
+
+* **versions** - The XSD schema version that the xpath belongs to
+* **latest_version
+* **current_version** - Is this schema the most recent version
+* **required
 
 
 A more in-depth description of each variable is available [HERE](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/).
