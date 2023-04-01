@@ -12,11 +12,17 @@ The concordance organizes data into approximately 125 distinct tables that corre
 
 [DATA DICTIONARY](https://nonprofit-open-data-collective.github.io/irs990efile/data-dictionary/data-dictionary.html)
 
+Also included here is an additional crosswalk for Part-01 of forms 990-EZ and the full 990. This section is somewhat distinct because many of the financial variables on Part-01 of the 990-EZ are not explicitly present on the full 990-PC, but they can be reconstructed (mostly) by creating composite variables by combining several fields.  
+
+[FORM-990-EZ-PART-01-CROSSWALK.xlsx](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/FORM-990-EZ-PART-01-CROSSWALK-v1.xlsx]
+
 Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
 
 --- 
 
 ## DATA DICTIONARY FOR MASTER CONCORDANCE FILE
+
+Note that the official form names are the "full" 990 (required for all public charities), the 990-EZ (for small public charities), and the 990-PF (for private foundations). In the documentation we refer to the full 990 as the 990-PC for "public charity" (as opposed to the 990-PF for private foundations). That provides for additional consistency in formatting and prevents confusion about whether we mean the full or EZ version when referencing "form 990".  
 
 The [efiler_master_concordance.csv](efiler_master_concordance.csv) included in this repository consists of the following variables:
 
