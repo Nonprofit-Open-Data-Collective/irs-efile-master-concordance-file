@@ -8,6 +8,8 @@ For clarity and ease of use variable names all follow consistent conventions:
 * Second two characters: Part of the form or schedule (01, 02, etc.) 
 * Remaining string: variable names 
 
+---------  
+
 **Natural Variable Groups**
 
 When naming variables we lead with the noun and follow with the adjective or qualifier. This helps to naturally group variables. For example, if you sort the variable names then all of the revenue categories will appear together if they are named *revenue_contracts* & *revenue_grants* versus *contract_revenue* & *grants_revenue*. 
@@ -34,11 +36,15 @@ Better:
 * addr_city
 * addr_zip
 
+---------  
+
 **Binary Variables**
 
 All checkboxes on the form or the questions that have a YES/NO or TRUE/FALSE nature end with an X to make them easily identifiable. 
 
 F9_07_COMP_DTK_POS_KEY_EMPL_X
+
+---------  
 
 
 ## Abbreviations
