@@ -4,6 +4,8 @@ Lots of statistical software packages limit variable name length to 32 character
 
 For consistency, we have used the following abbreviations when formulating variable names. 
 
+Updates are available in this [google spreadsheet](https://docs.google.com/spreadsheets/d/1TDIR3cUm2vXMpKjU5rz4QZ1aucMy9udfjFpKCT8NSUU/edit#gid=0).
+
 
 |Abbreviation  |Term                                     |
 |:-------------|:----------------------------------------|
