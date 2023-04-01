@@ -58,10 +58,10 @@ F990-PC-PART-07-SECTION-B-LINE-01-COL-B
 
 **XML SCHEMA INFO** (from XSD files)
 
-* **versions** - The XSD schema version that the xpath belongs to
-* **latest_version
-* **current_version** - Is this schema the most recent version
-* **required
+* **versions** - All XSD schema versions that contain the xpath
+* **latest_version** - The last version of the XSD that contained the xpath 
+* **current_version** - Is this schema (xpath) the current version used? 
+* **required** - Are filers required to answer the question (this field is currently incomplete) 
 
 
 A more in-depth description of each variable is available [HERE](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/).
