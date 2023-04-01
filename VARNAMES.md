@@ -2,13 +2,17 @@
 
 For clarity and ease of use variable names all follow consistent conventions: 
 
-F9_01_REV_CONTR_GRANTS_PY 
+**F9_01_REV_CONTR_GRANTS_PY**
 
 * First two characters: Form (F9) or Schedule (SA, SB, etc.)
 * Second two characters: Part of the form or schedule (01, 02, etc.) 
 * Remaining string: variable names 
 
-When naming variables we lead with the noun and follow with the adjective or qualifier. This helps to naturally group variables. Prefixes are omitted in these examples for simplicity:
+**Natural Variable Groups**
+
+When naming variables we lead with the noun and follow with the adjective or qualifier. This helps to naturally group variables. For example, if you sort the variable names then all of the revenue categories will appear together if they are named *revenue_contracts* & *revenue_grants* versus *contract_revenue* & *grants_revenue*. 
+
+Prefixes are omitted in these examples for simplicity:
 
 Bad: 
 * grants
@@ -18,7 +22,7 @@ Bad:
 Good:
 * rev_grants
 * rev_fundraisers_net
-* rev_rent versus exp_rent
+* rev_rent
 
 OK: 
 * street
@@ -30,6 +34,11 @@ Better:
 * addr_city
 * addr_zip
 
+**Binary Variables**
+
+All checkboxes on the form or the questions that have a YES/NO or TRUE/FALSE nature end with an X to make them easily identifiable. 
+
+F9_07_COMP_DTK_POS_KEY_EMPL_X
 
 
 ## Abbreviations
