@@ -14,7 +14,7 @@ The concordance organizes data into approximately 125 distinct tables that corre
 
 Also included here is an additional crosswalk for Part-01 of forms 990-EZ and the full 990. This section is somewhat distinct because many of the financial variables on Part-01 of the 990-EZ are not explicitly present on the full 990-PC, but they can be reconstructed (mostly) by creating composite variables by combining several fields.  
 
-[FORM-990-EZ-PART-01-CROSSWALK.xlsx](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/FORM-990-EZ-PART-01-CROSSWALK-v1.xlsx]
+[FORM-990-EZ-PART-01-CROSSWALK.xlsx](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/FORM-990-EZ-PART-01-CROSSWALK-v1.xlsx)
 
 Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-collective.github.io/irs-efile-master-concordance-file/) link for an overview of informaton contained within the Master Concordance File.
 
