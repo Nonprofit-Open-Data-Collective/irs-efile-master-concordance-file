@@ -1,19 +1,19 @@
-This folder contains PDFs of the 2016 version of Form 990(PC), Form 990EZ, Form 990PF, and all Schedules. 
+This folder contains an archive of PDFs of Form 990(PC), Form 990EZ, Form 990PF, and all Schedules. 
 
-It also contains 
+Note that Form 990 is referenced in the concordance as Form **990-PC** (PC for public charity), to differentiate between the **990-PF** (PF = private foundations) and **990-EZ** (abbreviated version of the full Form 990-PC filed by small nonprofits). 
 
 ## Revisions to the Form
 
 Major revisions to Form 990 [were made in 2008 and took effect in 2010](https://www.thetaxadviser.com/issues/2009/aug/revisedform990theevolutionofgovernanceandthenonprofitworld.html), but the form has been mostly consistent since then with most changes effecting instructions and not the form itself with a few minor exceptions ([for example](https://www.pwc.com/us/en/services/tax/library/2021-form-990-contains-a-couple-of-notable-changes.html)). 
 
-Location codes describe the location of fields on the paper version of 990 form (part + section + line). When creating data dictionaries we refer to field location on the full Form 990 ("990-PC" for public charity, as opposed to the 990-PF for private foundations). For all fields with scope PZ (the questions are asked on the 990(PC) and 990-EZ), the loction codes describe the position on the full 990. 
+Location codes describe the location of fields on the paper version of 990 form (part + section + line). When creating data dictionaries we refer to field location on the full Form 990. For all fields with scope PZ (the questions are asked on the 990(PC) and 990-EZ), the loction codes describe the position on the full 990. 
 
 Location codes should be consistent between years 2012 and current forms since few changes were made. That said, efile schemas and fields have evolved each year and sometimes differ slightly from 990 fields (room for additional entries, occassionally an extra field). The efile schemas were revised heavily between 2011 and 2012 so xpaths and xml field names will vary significantly across versions before and after that juncture. 
 
 
 ## Archive of 990 Forms
 
-if in doubt you can find old versions of forms on the IRS site: 
+You can access old versions of forms on the IRS site: 
 
 https://www.irs.gov/charities-non-profits/form-990-series-downloads
 
