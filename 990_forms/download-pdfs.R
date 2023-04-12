@@ -16,14 +16,13 @@ head( pdfs ) %>% kable()
 
 
 
-
-
 # CREATE FOLDERS
 years <- unique( pdfs$year )
 for( i in years )
 { dir.create( i ) }
 
 
+# BATCH DOWNLOAD FILES
 for( i in 1:nrow(pdfs) )
 {  
   type.i <- pdfs$type[i]
