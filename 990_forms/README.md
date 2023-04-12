@@ -41,7 +41,9 @@ head( pdfs ) %>% kable()
 unique( pdfs$type ) %>% sort() %>% kable()
 ```
 
-|:-----------------|
+
+| FORM TYPE        |  
+|:-----------------|  
 |f990              |
 |f990-a-sf         |
 |f990-ar           |
@@ -77,7 +79,7 @@ unique( pdfs$type ) %>% sort() %>% kable()
 |f990-t-schedule-a |
 |f990-t-schedule-m |
 |f990-w            |
-|f990-w-fy         |
+|f990-w-fy         |  
 
 
 Batch download all old 990 forms. 
