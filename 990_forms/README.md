@@ -85,26 +85,50 @@ unique( pdfs$type ) %>% sort() %>% kable()
 Batch download all old 990 forms. 
 
 ```r
-# CREATE FOLDERS FOR YEARS
-years <- unique( pdfs$year )
-for( i in years )
-{  dir.create(i)  }
+download_forms <- function( year )
+{
+  dir.create( year )
+  url.root <- "https://www.irs.gov/pub/irs-prior/"
+  
+  # form.type <- unique( pdfs$type ) %>% sort()
+  form.type <- 
+    c("f990", "f990-a-sf", "f990-ar", "f990-bl", "f990-c", "f990-ez", 
+    "f990-p-schedule-a", "f990-pf", "f990-schedule-a", "f990-schedule-b", 
+    "f990-schedule-c", "f990-schedule-d", "f990-schedule-e", "f990-schedule-f", 
+    "f990-schedule-f-1", "f990-schedule-g", "f990-schedule-h", "f990-schedule-i", 
+    "f990-schedule-i-1", "f990-schedule-j", "f990-schedule-j-1", 
+    "f990-schedule-j-2", "f990-schedule-k", "f990-schedule-l", "f990-schedule-m", 
+    "f990-schedule-n", "f990-schedule-n-1", "f990-schedule-o", "f990-schedule-r", 
+    "f990-schedule-r-1", "f990-sf", "f990-t", "f990-t-schedule-a", 
+    "f990-t-schedule-m", "f990-w", "f990-w-fy")
+  
+  for( i in form.type )
+  {
+    url.i <- paste0( url.root, year, "--", i, ".pdf" )
+    file.name.i <- paste0( year, "/", i, "-", year, ".pdf" )
+    if( ! file.exists( file.name.i ) )
+    { 
+       try ( 
+         download.file( url = url.i, 
+                        destfile = file.name.i,
+                        mode = "wb" ) )
+    }   # end of if
+    
+  }     # end of loop
+  
+  return( NULL )
+  
+}       # end of function 
 
 
-# DOWNLOAD ALL PDFS
-for( i in 1:nrow(pdfs) )
-{  
-  type.i <- pdfs$type[i]
-  year.i <- pdfs$year[i]
-  url.i  <- pdfs$url[i]
 
-  file.name.i <- paste0( year.i, "/", type.i, "-", year.i, ".pdf" )
+# TO UPDATE ONLY ONE YEAR
+download_forms( 2022 )
 
-  try(  download.file( url = url.i, 
-                       destfile = file.name.i,
-                       mode = "wb" ) )
-
-}  ### end of for i  ###
+# CHECK FOR ALL YEARS
+years <- 1951:2022
+for( j in years )
+{ download_forms(j) }
 ```
 
 
