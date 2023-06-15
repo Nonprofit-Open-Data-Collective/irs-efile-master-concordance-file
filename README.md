@@ -24,7 +24,7 @@ Follow the [MASTER CONCORDANCE FILE DOCUMENTATION](https://nonprofit-open-data-c
 
 Note that the official form names are the "full" 990 (required for all public charities), the 990-EZ (for small public charities), and the 990-PF (for private foundations). In the documentation we refer to the full 990 as the 990-PC for "public charity" (as opposed to the 990-PF for private foundations). That provides for additional consistency in formatting and prevents confusion about whether we mean the full or EZ version when referencing "form 990".  
 
-The [efiler_master_concordance.csv](efiler_master_concordance.csv) included in this repository consists of the following variables:
+The [efiler_master_concordance.csv](concordance.csv) included in this repository consists of the following variables:
 
 **VARIABLE DEFINITIONS**
 
