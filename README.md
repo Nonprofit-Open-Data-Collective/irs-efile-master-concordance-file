@@ -6,7 +6,7 @@ The IRS released the [990 E-FILER DATA](https://aws.amazon.com/public-datasets/i
 
 The MCF is meant to serve as a rosetta stone of sorts, allowing programmers to convert XML documents into a structured database by mapping 10,000 unique xpaths onto a consistent and well-documented data dictionary.
 
-We designed consistent standards for [variable naming conventions](VARNAMES.md) and [documentation](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/Instructions%20for%20Updating%20Concordance%20v3.2.pdf) to improve ease of use. 
+We designed consistent standards for [variable naming conventions](00-documentation/VARNAMES.md) and [documentation](https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file/blob/master/00-documentation/Instructions%20for%20Updating%20Concordance%20v3.2.pdf) to improve ease of use. 
 
 The concordance organizes data into approximately 125 distinct tables that correspond with sections on the forms (approximately 80 one-to-one tables and 46 one-to-many tables).  
 
