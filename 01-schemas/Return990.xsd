@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema targetNamespace="http://www.irs.gov/efile" xmlns="http://www.irs.gov/efile" xmlns:efile="http://www.irs.gov/efile"
+
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+
+
+	<xsd:annotation>
+
+		<xsd:documentation>
+
+			<Description>IRS e-file Tax Exempt and Government Entities Schema - Return schema for 990 return</Description>
+
+			<TaxYear>2014</TaxYear>
+
+			<MaturityLevel>Drop 3 Release</MaturityLevel>
+
+			<ReleaseDate>Sept.8, 2015</ReleaseDate>			
+
+		</xsd:documentation>
+
+	</xsd:annotation>
+
+
+
+	<xsd:include schemaLocation="../Common/ReturnHeader990x.xsd" />
+
+	<xsd:include schemaLocation="ReturnData990.xsd" />
+
+
+
+	<!-- Tax Exempt and Government Entities Organization Return - 990 -->
+
+	<xsd:element name="Return">
+
+		<xsd:annotation>
+
+			<xsd:documentation>990 Return - wraps around Return Header and Return Data</xsd:documentation>
+
+		</xsd:annotation>
+
+
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+
+
+				<xsd:element ref="ReturnHeader" />
+
+				<xsd:element ref="ReturnData" />
+
+
+
+			</xsd:sequence>
+
+			
+
+			<!-- Return Version -->
+
+			<xsd:attribute name="returnVersion" type="StringType" use="required" fixed="2014v6.0" >
+
+				<xsd:annotation>
+
+					<xsd:documentation>Return Version</xsd:documentation>
+
+				</xsd:annotation>
+
+			</xsd:attribute>
+
+
+
+		</xsd:complexType>
+
+		
+
+		<!-- Uniqueness constraint for 'documentId' attribute of return documents -->
+
+		<xsd:unique name="documentId">
+
+			<xsd:selector xpath="efile:ReturnData/efile:*" />
+
+			<xsd:field xpath="@documentId" />
+
+		</xsd:unique>
+
+
+
+		<!-- Uniqueness constraint for Binary Attachment -->
+
+		<xsd:unique name="BinaryAttachment">
+
+			<xsd:selector xpath="efile:ReturnData/efile:BinaryAttachment" />
+
+			<xsd:field xpath="efile:AttachmentLocationTxt" />
+
+		</xsd:unique>
+
+
+
+	</xsd:element>
+
+
+
+</xsd:schema>
+
