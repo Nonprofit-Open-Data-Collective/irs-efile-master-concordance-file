@@ -6,11 +6,13 @@ authors:
   given-names: "Jesse"
   orcid: "https://orcid.org/0000-0003-4974-0782"
 title: "IRS 990 Efiler Concordance File"
+type: dataset
 version: 0.0.0
-date-released: 2024-12-22
-url: "https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file"
+license: ODC-By-1.0
 identifiers:
   - description: Stable DOI covering all releases of the concordance file
     type: doi
     value: "10.5281/zenodo.14544301"
+date-released: 2024-12-22
+url: "https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file"
  
