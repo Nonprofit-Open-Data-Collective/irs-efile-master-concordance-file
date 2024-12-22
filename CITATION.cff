@@ -9,3 +9,8 @@ title: "IRS 990 Efiler Concordance File"
 version: 0.0.0
 date-released: 2024-12-22
 url: "https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file"
+identifiers:
+  - description: Stable DOI covering all releases of the concordance file
+    type: doi
+    value: "10.5281/zenodo.14544301"
+ 
