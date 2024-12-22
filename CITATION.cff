@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this crossswalk, please cite it as below."
+abstract: The IRS 990 Efiler Concordance File defines standard XML xpath to variable mappings, variable to table mappings, standardized variable naming conventions, and provides documentation necessary to build structured databases from raw IRS 990 XML files.
+authors:
+- family-names: "Lecy"
+  given-names: "Jesse"
+  orcid: "https://orcid.org/0000-0003-4974-0782"
+title: "IRS 990 Efiler Concordance File"
+version: 0.0.0
+date-released: 2024-12-22
+url: "https://github.com/Nonprofit-Open-Data-Collective/irs-efile-master-concordance-file"
